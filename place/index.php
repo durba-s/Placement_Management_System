@@ -16,6 +16,14 @@ $user_data=check_login($con);
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<title>Student Dasboard</title>
 </head>
+<style type="text/css">
+	.close1{padding:.75rem 1.25rem;color:inherit}
+	.close1{float:right;font-size:1.5rem;font-weight:700;line-height:1;color:#000;text-shadow:0 1px 0 #fff;opacity:.5}.close1:focus,.close:hover{color:#000;text-decoration:none;opacity:.75}
+	.close1:not(:disabled):not(.disabled){cursor:pointer}
+	.close1{padding:0;background-color:transparent;border:0;-webkit-appearance:none}
+	.close1{padding:1rem;margin:-1rem -1rem -1rem auto}
+	
+</style>
 <body>
 
 	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#9e36ff;">
