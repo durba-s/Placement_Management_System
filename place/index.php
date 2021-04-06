@@ -321,5 +321,3 @@ if(isset($_POST['sort1'])){
 
 				</body>
 				</html>
-
-
