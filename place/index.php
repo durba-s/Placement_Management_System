@@ -1,11 +1,33 @@
 <?php
+
 session_start();
 
 include("connection.php");
 include("functions.php");
-$_SESSION['sort-by'];
-$_SESSION['sort-on'];
+//$_SESSION['sort-by'];
+//$_SESSION['sort-on'];
 $user_data=check_login($con);
+
+if(isset($_POST['save'])){
+    $crs=$_POST['course'];
+    $gde=$_POST['grade'];
+    $sql = "INSERT INTO STUD_COURSE VALUES ('{$_SESSION['uid']}','$crs','$gde')";
+    mysqli_query($con, $sql);
+    header("Refresh:0");
+}
+if(isset($_POST['save1'])){
+    $crs1=$_POST['course1'];
+    $gde1=$_POST['grade1'];
+    $sql1 = "UPDATE STUD_COURSE SET GRADE=".$gde1." where sid={$_SESSION['uid']} and courseid='$crs1'";
+    mysqli_query($con, $sql1);
+    header("Refresh:0");
+}
+if(isset($_POST['sort1'])){
+    $_SESSION['sort-by']=$_POST['sortby'];
+    $_SESSION['sort-on']=$_POST['sort'];
+    header("Refresh:0");
+}												
+
 ?>
 
 <!DOCTYPE html>
@@ -137,19 +159,20 @@ $user_data=check_login($con);
 										echo "</select>";
 
 										?>
-									</div>
+									
 									<div class="modal-footer">
 										<button type="submit" class="btn btn-primary" name="save">Save changes</button>
-										<?php if(isset($_POST['save'])){
+                                        <!--PHP can be found above
+										php if(isset($_POST['save'])){
 											$crs=$_POST['course'];
 											$gde=$_POST['grade'];
 											$sql = "INSERT INTO STUD_COURSE VALUES ('{$_SESSION['uid']}','$crs','$gde')";
 											mysqli_query($con, $sql);
 											header("Refresh:0"); }
-											?>
+											?-->
 										</div>
 									</form>
-
+                                </div>
 								</div>
 							</div>
 							<script type="text/javascript">
@@ -207,16 +230,9 @@ $user_data=check_login($con);
 											echo "</select>";
 
 											?>
-										</div>
 										<div class="modal-footer">
 											<button type="submit" class="btn btn-primary" name="save1">Save changes</button>
-											<?php if(isset($_POST['save1'])){
-												$crs1=$_POST['course1'];
-												$gde1=$_POST['grade1'];
-												$sql1 = "UPDATE STUD_COURSE SET GRADE=".$gde1." where sid={$_SESSION['uid']} and courseid='$crs1'";
-												mysqli_query($con, $sql1);
-												header("Refresh:0"); }
-												?>
+											<!--PHP can be found above-->
 												<script type="text/javascript">
 													var modal1 = document.getElementById("myModal1");
 													var btn1= document.getElementById("gBtn");
@@ -235,7 +251,7 @@ $user_data=check_login($con);
 												</script>
 											</div>
 										</form>
-
+                                        </div>
 									</div>
 								</div>
 
@@ -264,13 +280,9 @@ $user_data=check_login($con);
 								
 								<button type='submit' name='sort1' class='btn btn-info'>Sort</button>
 							</form>
+                            <!--PHP can be found above-->
 							<?php
-							if(isset($_POST['sort1'])){
-								$_SESSION['sort-by']=$_POST['sortby'];
-								$_SESSION['sort-on']=$_POST['sort'];
-								header("Refresh:0");
-							}
-							$query;
+							//$query;
 							if(isset($_SESSION['sort-on'])){
 							$query = "select c.courseid,c.name,c.creds,t1.grade from stud_course t1,student t2,course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by {$_SESSION['sort-by']} {$_SESSION['sort-on']}";}
 							else{
@@ -299,7 +311,7 @@ $user_data=check_login($con);
 										$j=$j+1;
 									}
 									echo "</table>";
-									?>
+				            ?>
 									
 								</div>
 							</main>

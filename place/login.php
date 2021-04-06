@@ -112,11 +112,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 				</select>
 			</div>
 			<div class="input-group">
-				<input type="text" placeholder="User ID" name="user_name" value="<?php echo $text; ?>" required>
+				<input type="text" placeholder="User ID" name="user_name" required>
 			</div>
 
 			<div class="input-group">
-				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+				<input type="password" placeholder="Password" name="password" required>
 			</div>
 			<div style="color:red ;">
 				<?php
