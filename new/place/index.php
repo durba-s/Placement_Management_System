@@ -144,7 +144,7 @@ if(isset($_POST['sort1'])){
 						}
 
 						?>
-						<a href="#" class="btn btn-primary">Edit personal info</a>
+						<a href="edit_info.php" class="btn btn-primary">Edit personal info</a>
 					</div>
 				</div>
 			</div>
