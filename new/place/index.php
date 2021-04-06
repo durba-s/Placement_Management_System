@@ -298,12 +298,10 @@ if(isset($_POST['sort1'])){
 								<button type='submit' name='sort1' class='btn btn-info'>Sort</button>
 							</form>
 							<?php
+							$query5="select c.courseid,c.name,c.creds,t1.grade from stud_course t1,student t2,course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by c.name asc}";
 							if(isset($_SESSION['sort-on'])){
-								$query = "select c.courseid,c.name,c.creds,t1.grade from stud_course t1,student t2,course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by {$_SESSION['sort-by']} {$_SESSION['sort-on']}";}
-								else{
-									$query="select c.courseid,c.name,c.creds,t1.grade from stud_course t1,student t2,course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by c.name asc}";
-								}
-								$result=mysqli_query($con,$query);
+								$query5 = "select c.courseid,c.name,c.creds,t1.grade from stud_course t1,student t2,course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by {$_SESSION['sort-by']} {$_SESSION['sort-on']}";}
+								$result5=mysqli_query($con,$query5);
 								echo "<table class='table'>";
 								echo "<thead>";
 								echo "<tr style='background-color:#e6ccff;'>";  
@@ -314,12 +312,12 @@ if(isset($_POST['sort1'])){
 								echo  "</tr>";
 								echo "</thead>";
 								$j=0;
-								while ($queryRow = $result->fetch_row()) {
+								while ($queryRow = $result5->fetch_row()) {
 									if($j%2==0){
 										echo "<tr style='background-color:#f4f0fa;'>";}
 										else{
 											echo "<tr style='background-color:##f8f2fa;'>";} 
-											for($i = 0; $i < $result->field_count; $i++){
+											for($i = 0; $i < $result5->field_count; $i++){
 												echo "<td>$queryRow[$i]</td>";
 											}
 											echo "</tr>";
@@ -336,5 +334,3 @@ if(isset($_POST['sort1'])){
 
 					</body>
 					</html>
-
-
