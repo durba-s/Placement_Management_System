@@ -148,8 +148,8 @@ if(isset($_POST['sort1'])){
 			<main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
 				<h3>Courses Taken</h3>
 				<br>
-				<div>
-					<button type='button' class='btn btn-info' id='myBtn' <?php if($result11->num_rows>0) {?> disabled="disabled" <?php } ?> >Add Course</button>
+				<div class="row">
+					<button type='button' class='btn btn-info col-2 m-1' id='myBtn' <?php if($result11->num_rows>0) {?> disabled="disabled" <?php } ?> >Add Course</button>
 					<div id="myModal" class="modal" >
 						<div class="modal-dialog" id="m"role="document">
 							<div class="modal-content" id="mc">
@@ -209,9 +209,7 @@ if(isset($_POST['sort1'])){
 
 
 					</div>
-					<br>
-                    <br>
-                    <button type='button' class='btn btn-info' id='gBtn' <?php if($result11->num_rows>0) {?> disabled="disabled" <?php } ?>>Edit Grade</button>
+                    <button type='button' class='btn btn-info col-2 m-1' id='gBtn' <?php if($result11->num_rows>0) {?> disabled="disabled" <?php } ?>>Edit Grade</button>
                     <div id="myModal1" class="modal" >
                         <div class="modal-dialog" id="m1"role="document">
                             <div class="modal-content" id="mc1">
@@ -267,9 +265,8 @@ if(isset($_POST['sort1'])){
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <div>
+</div>
+                    <div class="flex m-1">
                         <form method = "POST" id="sorting">
                             <label for='sortby'>Sort By : </label>
                             <select name='sortby' id='sortby'>
@@ -283,41 +280,41 @@ if(isset($_POST['sort1'])){
                                 <option value="asc" >Ascending</option>
                                 <option value="desc" >Descending</option>
                             </select>
-                            <button type='submit' name='sort1' class='btn btn-info'>Sort</button>
+                            <button type='submit' name='sort1' class='btn btn-info px-3'>Sort</button>
                         </form>
-                        <?php
-                            $query5 = "select c.courseid, c.name, c.creds, t1.grade from stud_course t1, student t2, course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by c.name asc";
-                            /*if(isset($_POST['sort1'])){
-                                $query5 = "select c.courseid, c.name, c.creds, t1.grade from stud_course t1, student t2, course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by {$_SESSION['sort-by']} {$_SESSION['sort-on']}";
-                            }*/
-                            $result5 = mysqli_query($con, $query5);
-                            echo "<table class='table'>";
-                            echo "<thead>";
-                            echo "<tr style='background-color:#e6ccff;'>";  
-                            echo  "<th scope='col'>CourseID</th>";
-                            echo  "<th scope='col'>CourseName</th>";
-                            echo  "<th scope='col'>Credits</th>";
-                            echo  "<th scope='col'>Grade</th>";
-                            echo  "</tr>";
-                            echo "</thead>";
-                            $j=0;
-                            while ($queryRow = $result5->fetch_row()){
-                                if($j%2==0){
-                                    echo "<tr style='background-color:#f4f0fa;'>";
-                                }
-                                else{
-                                    echo "<tr style='background-color:#f8f2fa;'>";} 
-                                    for($i = 0; $i < $result5->field_count; $i++){
-                                        echo "<td>$queryRow[$i]</td>";
-                                }
-                                echo "</tr>";
-                                $j=$j+1;
-                            }
-                            echo "</table>";
-                        ?>
-
                     </div>
-                </div>
+                    </div>
+                    <br/>
+                    <?php
+                        $query5 = "select c.courseid, c.name, c.creds, t1.grade from stud_course t1, student t2, course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by c.name asc";
+                        /*if(isset($_POST['sort1'])){
+                            $query5 = "select c.courseid, c.name, c.creds, t1.grade from stud_course t1, student t2, course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by {$_SESSION['sort-by']} {$_SESSION['sort-on']}";
+                        }*/
+                        $result5 = mysqli_query($con, $query5);
+                        echo "<table class='table'>";
+                        echo "<thead>";
+                        echo "<tr style='background-color:#e6ccff;'>";  
+                        echo  "<th scope='col'>CourseID</th>";
+                        echo  "<th scope='col'>CourseName</th>";
+                        echo  "<th scope='col'>Credits</th>";
+                        echo  "<th scope='col'>Grade</th>";
+                        echo  "</tr>";
+                        echo "</thead>";
+                        $j=0;
+                        while ($queryRow = $result5->fetch_row()){
+                            if($j%2==0){
+                                echo "<tr style='background-color:#f4f0fa;'>";
+                            }
+                            else{
+                                echo "<tr style='background-color:#f8f2fa;'>";} 
+                                for($i = 0; $i < $result5->field_count; $i++){
+                                    echo "<td>$queryRow[$i]</td>";
+                            }
+                            echo "</tr>";
+                            $j=$j+1;
+                        }
+                        echo "</table>";
+                    ?>
             </main>
         </div>
     </div>
