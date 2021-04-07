@@ -69,8 +69,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link active-link" href="index.php">Home
+				<li class="nav-item">
+					<a class="nav-link" href="index.php">Home
 					</a>
 				</li>
 				<li class="nav-item">

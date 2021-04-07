@@ -142,6 +142,7 @@ if(isset($_POST['sort1'])){
                             }
 						?>
 						<a href="edit_info.php" class="btn btn-primary">Edit personal info</a>
+                        <a href="change_pass.php" class="btn btn-primary">Change password</a>
 					</div>
 				</div>
 			</div>
