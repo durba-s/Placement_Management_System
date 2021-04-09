@@ -13,7 +13,7 @@ Every company registered must offer at least one job
 
 
 >>Team Members:
->> *Ankita Behera 
->> *Durba Satpathi 
->> *Kevin K Biju 
->> *Sanket Bhatt
+>>* Ankita Behera 
+>>* Durba Satpathi 
+>>* Kevin K Biju 
+>>* Sanket Bhatt
