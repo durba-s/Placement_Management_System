@@ -39,7 +39,7 @@ if(isset($_POST['sort1'])){
 	.close1:not(:disabled):not(.disabled){cursor:pointer}
 	.close1{padding:0;background-color:transparent;border:0;-webkit-appearance:none}
 	.close1{padding:1rem;margin:-1rem -1rem -1rem auto}
-	
+
 </style>
 <body>
 
@@ -59,7 +59,7 @@ if(isset($_POST['sort1'])){
 					<a class="nav-link" href="stud_pref.php">Preferences</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Eligibility</a>
+					<a class="nav-link" href="stud_elig.php">Eligibility</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="logout.php">Logout</a>
@@ -71,7 +71,7 @@ if(isset($_POST['sort1'])){
 			</form>
 		</div>
 	</header>
-	<div class="container-fluid">   
+	<div class="container-fluid">
 		<div class="row flex-xl-nowrap">
 			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0;">
 				<div class="card">
@@ -86,7 +86,7 @@ if(isset($_POST['sort1'])){
 							margin-right: auto;
 							width: 50%; border-radius: 50%"><br>
 						<?php
-						
+
 						echo('<p class="card-text"><b>ID Number: </b>');
 						echo $user_data['SID'];
 						echo('<p class="card-text"><b>Name: </b>');
@@ -121,7 +121,7 @@ if(isset($_POST['sort1'])){
 						$query11="select t1.sid,t2.jobname,t2.salary FROM  STUD_GETS t1,job t2 WHERE t1.sid={$_SESSION['uid']} and t2.jid=t1.jid ";
 						$result11=mysqli_query($con,$query11);
 						if($result11 && mysqli_num_rows($result11) > 0)
-						{ 
+						{
 							echo('<p class="card-text"><b>Placement Status: </b>');
 							echo "Placed";
 							echo('</p>');
@@ -145,6 +145,7 @@ if(isset($_POST['sort1'])){
 
 						?>
 						<a href="edit_info.php" class="btn btn-primary">Edit personal info</a>
+            <p></p>
                         <a href="change_pass.php" class="btn btn-primary">Change password</a>
 					</div>
 				</div>
@@ -305,7 +306,7 @@ if(isset($_POST['sort1'])){
 								$result5=mysqli_query($con,$query5);
 								echo "<table class='table'>";
 								echo "<thead>";
-								echo "<tr style='background-color:#e6ccff;'>";  
+								echo "<tr style='background-color:#e6ccff;'>";
 								echo  "<th scope='col'>CourseID</th>";
 								echo  "<th scope='col'>CourseName</th>";
 								echo  "<th scope='col'>Credits</th>";
@@ -317,7 +318,7 @@ if(isset($_POST['sort1'])){
 									if($j%2==0){
 										echo "<tr style='background-color:#f4f0fa;'>";}
 										else{
-											echo "<tr style='background-color:##f8f2fa;'>";} 
+											echo "<tr style='background-color:##f8f2fa;'>";}
 											for($i = 0; $i < $result5->field_count; $i++){
 												echo "<td>$queryRow[$i]</td>";
 											}
@@ -335,5 +336,3 @@ if(isset($_POST['sort1'])){
 
 					</body>
 					</html>
-
-
