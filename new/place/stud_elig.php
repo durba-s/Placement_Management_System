@@ -30,11 +30,11 @@ $user_data=check_login($con);
 					<a class="nav-link" href="index.php">Home
 					</a>
 				</li>
-				<li class="nav-item active">
-					<a class="nav-link active-link " href="#">Preferences</a>
+				<li class="nav-item ">
+					<a class="nav-link" href="stud_pref.php">Preferences</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="stud_elig.php">Eligibility</a>
+				<li class="nav-item active">
+					<a class="nav-link active-link" href="#">Eligibility</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="logout.php">Logout</a>
@@ -99,21 +99,27 @@ $user_data=check_login($con);
 
 			</div>
 			<main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
-				<h3>My Job Preferences</h3>
+				<h3>You are eligible to apply for</h3>
 				<br>
-				<div>
+				<!--<div>
 					<button type='button' class='btn btn-info'>Add</button>
-				</div>
+				</div>-->
 				<br>
+
+
 				<?php
-				$query="select t1.jid,t3.jobname from stud_wants t1,job t3 where t1.jid=t3.jid and t1.sid={$_SESSION['uid']}";
+        #$view1="create view count_req as select jid, count(*) as prereq_count from job_req group by jid";
+        #$view2="create or replace view stud_solve_req as select t1.jid, count(*) as courses_sat from job_req t1 join stud_course t2 where t2.sid={$_SESSION['uid']} and t2.courseid=t1.courseid and t2.grade>t1.min_grade group by t1.jid "
+				$query="select t2.jid as j,  t3.JOBNAME, t3.role, t3.salary from stud_course t1,job_req t2, job t3 where t1.sid={$_SESSION['uid']} and t2.courseid=t1.courseid and t2.min_grade<=t1.grade and t2.jid=t3.jid group by t2.jid HAVING
+count(*) in(select count(*) as cc from job_req group by jid having jid=j) order by t3.salary desc;";
 				$result=mysqli_query($con,$query);
 				echo "<table class='table'>";
 				echo "<thead>";
 				echo "<tr style='background-color:#e6ccff;'>";
 				echo  "<th scope='col'>Job ID</th>";
 				echo  "<th scope='col'>Job Name</th>";
-				echo  "<th scope='col'> </th>";
+        echo  "<th scope='col'>Role</th>";
+        echo  "<th scope='col'>Salary</th>";
 				echo  "</tr>";
 				echo "</thead>";
 				$j=0;
@@ -126,7 +132,6 @@ $user_data=check_login($con);
 								echo "<td>$queryRow[$i]</td>";
 
 							}
-							echo "<td><button type='button' class='btn btn-info'>Delete</button></td>";
 							echo "</tr>";
 							$j=$j+1;
 						}

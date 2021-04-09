@@ -25,10 +25,10 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 					else{
 						$_SESSION['log_error']= "Incorrect Password";
 					}
-					
+
 				}
 				else {$_SESSION['log_error'] = "User does not exist";}
-				
+
 			}
 
 
@@ -48,9 +48,9 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 					else{
 						$_SESSION['log_error']= "Incorrect Password";
 					}
-					
+
 				}
-				else {$_SESSION['log_error'] = "User does not exist";}	
+				else {$_SESSION['log_error'] = "User does not exist";}
 			}
 
 		}
@@ -71,7 +71,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 					}
 
 				}
-				else {$_SESSION['log_error'] = "User does not exist";}	
+				else {$_SESSION['log_error'] = "User does not exist";}
 			}
 
 		}*/
@@ -126,7 +126,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 				?>
 
 			</div>
-			<div class="input-group"> 
+			<div class="input-group">
 				<br>
 				<button name="submit" class="btn">Sign in</button>
 			</div>
