@@ -11,7 +11,6 @@ One student can prefer a minimum of 1 job and a maximum of 5 jobs
 Each student must complete at least one course
 Each student has exactly one branch
 Every company registered must offer at least one job
-
 >>Team Members:
 >>* Ankita Behera 
 >>* Durba Satpathi 
