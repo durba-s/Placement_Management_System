@@ -66,7 +66,7 @@ $user_data=check_login1($con);
 						echo('</p>');
 						
 						?>
-						<a href="#" class="btn btn-primary">Edit personal info</a>
+						<a href="edit_comp_info.php" class="btn btn-primary">Edit company info</a>
 					</div>
 				</div>
 			</div>

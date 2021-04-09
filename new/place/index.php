@@ -187,12 +187,12 @@ if(isset($_POST['sort1'])){
 										echo "</select>";
 
 										?>
-									</div>
+									
 									<div class="modal-footer">
 										<button type="submit" class="btn btn-primary" name="save">Save changes</button>
-										</div>
+								    </div>
 									</form>
-
+                                </div>
 								</div>
 							</div>
 							<script type="text/javascript">
@@ -250,7 +250,7 @@ if(isset($_POST['sort1'])){
 											echo "</select>";
 
 											?>
-										</div>
+										
 										<div class="modal-footer">
 											<button type="submit" class="btn btn-primary" name="save1">Save changes</button>
 												<script type="text/javascript">
@@ -271,7 +271,7 @@ if(isset($_POST['sort1'])){
 												</script>
 											</div>
 										</form>
-
+                                    </div>
 									</div>
 								</div>
 
