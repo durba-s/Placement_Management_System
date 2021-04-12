@@ -255,7 +255,7 @@ if(isset($_POST['save1'])){
 							<div class="modal-content" id="reqc">
 								<div class="modal-header" id="mh">
 									<h5 class="modal-title" id='ch'>Job Prerequisites</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<button type="button" class="reqClose" data-dismiss="modal" aria-label="Close">
 										<span class="reqClose" >&times;</span>
 									</button>
 								</div>
@@ -272,11 +272,11 @@ if(isset($_POST['save1'])){
                                 });                                
                             });
 							reqModalClose.onclick = function() {
-								modal.style.display = "none";
+								reqModal.style.display = "none";
 							}
 							window.onclick = function(event) {
 								if (event.target == modal) {
-									modal.style.display = "none";
+									reqModal.style.display = "none";
 								}
 							}
 						</script>

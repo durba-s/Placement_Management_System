@@ -53,6 +53,7 @@ $jid = $_GET['jid'];
 				        $result=mysqli_query($con,$query);
                         while($data = $result->fetch_row()){
                             echo "<tr><th scope='row'>{$i}</th><td>".$data[0]."</td><td>".$data[1]."</td><td>".$data[2]."</td></tr>";
+                            $i=$i+1;
                         }
                     ?>
                 </tbody>
