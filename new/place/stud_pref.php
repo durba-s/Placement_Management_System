@@ -255,7 +255,7 @@ if(isset($_POST['save1'])){
                             $('.picked').on('click', function() {
                                 console.log(this.id);
                                 jid = this.id;
-                                $('#reqb').load('view_prereq.php?jid="$jid"',function(){
+                                $('#reqb').load('view_prereq.php?jid='+jid,function(){
                                     reqModal.style.display = "block";
                                 });                                
                             });
@@ -270,12 +270,9 @@ if(isset($_POST['save1'])){
 						</script>
 					   </div> 
 				    </div>
-                </div>
+            </main>
 		</div>
-        </main>
-	</div>
-        </div>
- 
+	</div> 
 	<br>
 </body>
 </html>
