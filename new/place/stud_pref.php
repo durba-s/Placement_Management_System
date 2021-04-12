@@ -243,7 +243,7 @@ if(isset($_POST['save1'])){
 						<div class="modal-dialog modal-lg" id="req" role="document">
 							<div class="modal-content" id="reqc">
 								<div class="modal-header" id="mh">
-									<h5 class="modal-title" id='ch'>Job Prerequisites</h5>
+									<h5 class="modal-title" id='ch'>Job Details</h5>
 									<button type="button" class="reqClose btn close" data-dismiss="modal" aria-label="Close">
 										<span class="reqClose" >&times;</span>
 									</button>

@@ -31,15 +31,16 @@ $jid = $_GET['jid'];
 			} );
 		} );  
 	</script>
-	<title>Student Dasboard</title>
+	<title>Student Dashboard</title>
 </head>
 <body>
 	<div class="container-fluid">   
 		<div class="row flex-xl-nowrap">
 			<main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
+				<p>Job Prerequisites</p>
                 <table class="table">
                 <thead>
-                    <tr>
+                    <tr style="background-color:#f8edff;">
                     <th scope="col">#</th>
                     <th scope="col">Course ID</th>
                     <th scope="col">Course Name</th>
