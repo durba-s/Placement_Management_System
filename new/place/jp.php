@@ -35,9 +35,9 @@ $(document).ready(function() {
     } );
 } );</script>
 </head>
-<body style="height: 100vh;">
-	
-	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#1b0075;">
+<body>
+
+	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#2818de;">
 		<a class="navbar-brand" >Dashboard</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -53,6 +53,9 @@ $(document).ready(function() {
 					<a class="nav-link active-link" href="#">Job Prerequisites</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="up.php">Update Prerequisites</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="ps.php">Selections</a>
 				</li>
 				<li class="nav-item">
@@ -61,18 +64,16 @@ $(document).ready(function() {
 			</ul>
 		</div>
 	</header>
-<div class="container-fluid" style="height:inherit;">   
-		<div class="row flex-xl-nowrap" style="height: inherit; ">
-			<div class="col-md-3 col-lg-2" id="left-nav-bar" style="padding-left:0; padding-right:0;height: inherit; width: 230px; ">
-				<div class="card" style="height: inherit; width: 230px;">
-					<div class="card" style="padding: 1rem; background-color: #a991ff; color: white;height: inherit; width: 230px;">
-						<h5 class="card-title"><b>Company Profile</b></h5>
-						<img src="https://www.iconsdb.com/icons/preview/violet/administrator-xxl.png" style="display: block;
+	<div class="container-fluid">
+		<div class="row flex-xl-nowrap">
+			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0;">
+				<div class="card">
+					<div class="card" style="padding: 1rem;">
+						<h5 class="card-title">Company PROFILE</h5>
+						<img src="https://cdn4.iconfinder.com/data/icons/gradient-circle-blue/36/1014-512.png" style="display: block;
 						margin-left: auto;
 						margin-right: auto;
-						width: 50%; border-radius: 50%;
-						background: white;
-						"><br>
+						width: 50%; border-radius: 50%;"><br>
 						<?php
 						echo('<p class="card-text"><b>Company ID: </b>');
 						echo $user_data['CID'];
@@ -85,9 +86,9 @@ $(document).ready(function() {
 						echo('<p class="card-text"><b>State: </b>');
 						echo $user_data['STATE'];
 						echo('</p>');
-						
+
 						?>
-						<a href="edit_comp_info.php" class="btn btn-primary" style="background-color: #1b0075; color: white;">Edit Profile</a>
+						<a href="edit_comp_info.php" class="btn btn-primary">Edit personal info</a>
 					</div>
 				</div>
 			</div>
@@ -123,7 +124,7 @@ $(document).ready(function() {
 					$result5=mysqli_query($con, $sql1);
 					echo "<table id='example' class='display' style='width:100%'>";
 								echo "<thead>";
-								echo "<tr style='background-color:#d0c7ff;'>";  
+								echo "<tr style='background-color:#96b8ff;'>";
 								echo  "<th scope='col'>CourseID</th>";
 								echo  "<th scope='col'>CourseName</th>";
 								echo  "<th scope='col'>Credits</th>";
@@ -141,7 +142,6 @@ $(document).ready(function() {
 										}
 										echo "</table>";
 				}
-				
 				?>
 
 			</main>

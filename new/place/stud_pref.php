@@ -1,9 +1,9 @@
 <?php
 session_start();
- 
+
 include("connection.php");
 include("functions.php");
- 
+
 $user_data=check_login($con);
 if(isset($_POST['save'])){
 	$pjob=$_POST['job'];
@@ -17,9 +17,9 @@ if(isset($_POST['save1'])){
 	mysqli_query($con, $sql);
 	header("Refresh:0");
 }
- 
+
 ?>
- 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,18 +28,18 @@ if(isset($_POST['save1'])){
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src=" https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
- 
+
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 	<title>Student Dasboard</title>
 </head>
 <body>
-	
+
 	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#390669;">
 		<a class="navbar-brand" href="#">Dashboard</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
- 
+
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item ">
@@ -62,7 +62,7 @@ if(isset($_POST['save1'])){
 			</form>-->
 		</div>
 	</header>
-	<div class="container-fluid">   
+	<div class="container-fluid">
 		<div class="row flex-xl-nowrap">
 			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0; background: #7107b8; height: 100%;">
 				<div class="card">
@@ -112,7 +112,7 @@ if(isset($_POST['save1'])){
 						<a href="edit_info.php" class="btn btn-primary" style="background: #390669; color: white;">Edit personal info</a>
 					</div>
 				</div>
- 
+
 			</div>
 			<main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
 				<h3>My Job Preferences</h3>
@@ -139,7 +139,7 @@ if(isset($_POST['save1'])){
                                                 echo '<option value="'.$queryRow[0].'">'.$queryRow[1].'</option>';
                                             }
                                             echo "</select>";
- 
+
 										?>
                                     </div>
 									<div class="modal-footer">
@@ -163,9 +163,9 @@ if(isset($_POST['save1'])){
 								}
 							}
 						</script>
-					   </div> 
+					   </div>
 				    </div>
-				
+
 				<br>
 					<button type='button' class='btn btn-info col-1 m-2' id='gBtn'>Delete</button>
 					<div id="myModal1" class="modal" >
@@ -209,7 +209,7 @@ if(isset($_POST['save1'])){
 										</script>
 									</div>
 								</form>
- 
+
 							     </div>
                             </div>
 					</div>
@@ -258,7 +258,7 @@ if(isset($_POST['save1'])){
                                 jid = this.id;
                                 $('#reqb').load('view_prereq.php?jid='+jid,function(){
                                     reqModal.style.display = "block";
-                                });                                
+                                });
                             });
 							reqModalClose.onclick = function() {
 								reqModal.style.display = "none";
@@ -269,11 +269,11 @@ if(isset($_POST['save1'])){
 								}
 							}
 						</script>
-					   </div> 
+					   </div>
 				    </div>
             </main>
 		</div>
-	</div> 
+	</div>
 	<br>
 </body>
 </html>

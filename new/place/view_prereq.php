@@ -37,37 +37,7 @@ $jid = $_GET['jid'];
 	<div class="container-fluid">   
 		<div class="row flex-xl-nowrap">
 			<main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
-				<?php
-				$query="select * from job t1,company t2 where jid = {$jid} and t1.cid=t2.cid";
-				 $result=mysqli_query($con,$query);
-				 $data = $result->fetch_row();
-				 echo "<p>";
-				 echo "<b>Job ID- </b>";
-				 echo "$data[0]";
-				 echo "</p>";
-				 echo "<p>";
-				 echo "<b>Job Name- </b>";
-				 echo "$data[2]";
-				 echo "</p>";
-				 echo "<p>";
-				 echo "<b>Annual Salary- </b>Rs";
-				 echo "$data[4]";
-				 echo "</p>";
-				 echo "<p>";
-				 echo "<b>Company ID- </b>";
-				 echo "$data[0]";
-				 echo "</p>";
-				 echo "<p>";
-				 echo "<b>Company Name- </b>";
-				 echo "$data[6]";
-				 echo "</p>";
-				 echo "<p>";
-				 echo "<b>Company Location- </b>";
-				 echo "$data[7], $data[8]";
-				 echo "</p>";
-
-				?>
-				<p><b>Job Prerequisites- </b></p>
+				<p>Job Prerequisites</p>
                 <table class="table">
                 <thead>
                     <tr style="background-color:#f8edff;">

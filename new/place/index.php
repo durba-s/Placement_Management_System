@@ -81,7 +81,7 @@ if(isset($_POST['save1'])){
 			</form>-->
 		</div>
 	</header>
-	<div class="container-fluid">   
+	<div class="container-fluid">
 		<div class="row flex-xl-nowrap">
 			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0; background: #7107b8; height: 100%;">
 				<div class="card">
@@ -96,7 +96,7 @@ if(isset($_POST['save1'])){
 						margin-right: auto;
 						width: 50%; border-radius: 50%; border-style: solid;"><br>
 						<?php
-						
+
 						echo('<p class="card-text"><b>ID Number: </b>');
 						echo $user_data['SID'];
 						echo('<p class="card-text"><b>Name: </b>');
@@ -131,7 +131,7 @@ if(isset($_POST['save1'])){
 						$query11="select t1.jid,t2.jobname,t2.salary FROM  STUD_GETS t1,job t2 WHERE t1.sid={$_SESSION['uid']} and t2.jid=t1.jid ";
 						$result11=mysqli_query($con,$query11);
 						if($result11 && mysqli_num_rows($result11) > 0)
-						{ 
+						{
 							echo('<p class="card-text"><b>Placement Status: </b>');
 							echo "Placed";
 							echo('</p>');
@@ -291,7 +291,7 @@ if(isset($_POST['save1'])){
 					$result5=mysqli_query($con,$query5);
 					echo "<table id='example' class='display' style='width:100%'>";
 					echo "<thead>";
-					echo "<tr style='background-color:#e6ccff;'>";  
+					echo "<tr style='background-color:#e6ccff;'>";
 					echo  "<th scope='col'>CourseID</th>";
 					echo  "<th scope='col'>CourseName</th>";
 					echo  "<th scope='col'>Credits</th>";
@@ -301,7 +301,7 @@ if(isset($_POST['save1'])){
 					$j=0;
 					while ($queryRow = $result5->fetch_row()) {
 
-						echo "<tr>"; 
+						echo "<tr>";
 						for($i = 0; $i < $result5->field_count; $i++){
 							echo "<td>$queryRow[$i]</td>";
 						}
@@ -319,5 +319,3 @@ if(isset($_POST['save1'])){
 
 </body>
 </html>
-
-
