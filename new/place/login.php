@@ -25,10 +25,10 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 					else{
 						$_SESSION['log_error']= "Incorrect Password";
 					}
-
+					
 				}
 				else {$_SESSION['log_error'] = "User does not exist";}
-
+				
 			}
 
 
@@ -48,13 +48,13 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 					else{
 						$_SESSION['log_error']= "Incorrect Password";
 					}
-
+					
 				}
-				else {$_SESSION['log_error'] = "User does not exist";}
+				else {$_SESSION['log_error'] = "User does not exist";}	
 			}
 
 		}
-		/*else{
+		else{
 			$query="select * from admin where id='$user_name' limit 1";
 			$result=mysqli_query($con,$query);
 			if($result){
@@ -71,10 +71,10 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 					}
 
 				}
-				else {$_SESSION['log_error'] = "User does not exist";}
+				else {$_SESSION['log_error'] = "User does not exist";}	
 			}
 
-		}*/
+		}
 
 	}
 }
@@ -106,7 +106,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 				<select id="login-role" name="login-role">
 					<option value="Student">Student</option>
 					<option value="Company">Company</option>
-					<!--<option value="Admin">Admin</option>  -->
+					<option value="Admin">Admin</option>
 
 				</select>
 			</div>
@@ -126,9 +126,22 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 				?>
 
 			</div>
-			<div class="input-group">
+			<div class="input-group"> 
 				<br>
-				<button name="submit" class="btn">Sign in</button>
+				<button name="submit" style="
+				display: block;
+			    width: 100%;
+			    padding: 15px 20px;
+			    text-align: center;
+			    border: none;
+			    background: #b866ff;
+			    outline: none;
+			    border-radius: 30px;
+			    font-size: 1.2rem;
+			    color: #FFF;
+			    cursor: pointer;
+				">
+			   Sign in</button>
 			</div>
 			<br>
 		</form>
