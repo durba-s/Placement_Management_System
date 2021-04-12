@@ -50,7 +50,7 @@
 </head>
 <body style="background: #edf0ff;">
 	
-	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#2818de;">
+	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#1b0075;">
 		<a class="navbar-brand" >Dashboard</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
