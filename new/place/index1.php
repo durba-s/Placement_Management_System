@@ -30,9 +30,9 @@ $(document).ready(function() {
     } );
 } );</script>
 </head>
-<body>
+<body style="height: 100vh;">
 	
-	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#2818de;">
+	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#001d8f;">
 		<a class="navbar-brand" >Dashboard</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -56,11 +56,11 @@ $(document).ready(function() {
 			</ul>
 		</div>
 	</header>
-	<div class="container-fluid">   
-		<div class="row flex-xl-nowrap">
-			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0;">
+	<div class="container-fluid" style="height:inherit;">   
+		<div class="row flex-xl-nowrap" style="height: inherit;">
+			<div class="col-md-3 col-lg-2" id="left-nav-bar" style="padding-left:0; padding-right:0; background-color: #7d9cfa;">
 				<div class="card">
-					<div class="card" style="padding: 1rem;">
+					<div class="card" style="padding: 1rem; background-color: #7d9cfa; color: white; border-color: #7d9cfa;">
 						<h5 class="card-title">Company PROFILE</h5>
 						<img src="https://cdn4.iconfinder.com/data/icons/gradient-circle-blue/36/1014-512.png" style="display: block;
 						margin-left: auto;
@@ -80,7 +80,7 @@ $(document).ready(function() {
 						echo('</p>');
 						
 						?>
-						<a href="edit_comp_info.php" class="btn btn-primary">Edit personal info</a>
+						<a href="edit_comp_info.php" class="btn" style="background-color: #001d8f; color: white;">Edit personal info</a>
 					</div>
 				</div>
 			</div>

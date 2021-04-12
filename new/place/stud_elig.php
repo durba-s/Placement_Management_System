@@ -65,7 +65,7 @@ $user_data=check_login($con);
 		<div class="row flex-xl-nowrap">
 			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0; background: #7107b8; height: 100%;">
 				<div class="card">
-					<div class="card" style="padding: 1rem;">
+					<div class="card" style="padding: 1rem;background-color:#b866ff; color: white;">
 						<h5 class="card-title"><b>STUDENT PROFILE</b></h5>
 						<!--<img src="https://cdn3.iconfinder.com/data/icons/login-6/512/LOGIN-10-512.png" style="display: block;
 						margin-left: auto;

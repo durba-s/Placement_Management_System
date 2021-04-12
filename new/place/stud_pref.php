@@ -30,17 +30,6 @@ if(isset($_POST['save1'])){
 	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
  
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
- 
- 
- 
- 
-	<!--<script type="text/javascript">
-		$(document).ready(function() {
-			$('#example').DataTable( {
-				"pagingType": "full_numbers"
-			} );
-		} );  
-	</script>-->
 	<title>Student Dasboard</title>
 </head>
 <body>
@@ -77,7 +66,7 @@ if(isset($_POST['save1'])){
 		<div class="row flex-xl-nowrap">
 			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0; background: #7107b8; height: 100%;">
 				<div class="card">
-					<div class="card" style="padding: 1rem;">
+					<div class="card" style="padding: 1rem;background-color:#b866ff; color: white;">
 						<h5 class="card-title"><b>STUDENT PROFILE</b></h5>
 						<!--<img src="https://cdn3.iconfinder.com/data/icons/login-6/512/LOGIN-10-512.png" style="display: block;
 						margin-left: auto;
@@ -128,8 +117,8 @@ if(isset($_POST['save1'])){
 			<main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
 				<h3>My Job Preferences</h3>
 				<br>
-				<div>
-					<button type='button' class='btn btn-info' id='myBtn' >Add Job Preference</button>
+				<div class="row">
+					<button type='button' class='btn btn-info col-3 m-2' id='myBtn' >Add Job Preference</button>
 					<div id="myModal" class="modal" >
 						<div class="modal-dialog modal-lg" id="m"role="document">
 							<div class="modal-content" id="mc">
@@ -176,10 +165,9 @@ if(isset($_POST['save1'])){
 						</script>
 					   </div> 
 				    </div>
-				</div>
+				
 				<br>
-				<div>
-					<button type='button' class='btn btn-info' id='gBtn'>Delete</button>
+					<button type='button' class='btn btn-info col-1 m-2' id='gBtn'>Delete</button>
 					<div id="myModal1" class="modal" >
 						<div class="modal-dialog modal-lg" id="m1"role="document">
 							<div class="modal-content" id="mc1">
@@ -223,12 +211,10 @@ if(isset($_POST['save1'])){
 								</form>
  
 							     </div>
-						</div>
- 
- 
+                            </div>
 					</div>
 				</div>
-			</div>
+			     </div>
 				<br>
 				<?php
                     $query="select t1.jid,t3.jobname from stud_wants t1,job t3 where t1.jid=t3.jid and t1.sid={$_SESSION['uid']} order by t3.jobname asc";
@@ -257,7 +243,7 @@ if(isset($_POST['save1'])){
 							<div class="modal-content" id="reqc">
 								<div class="modal-header" id="mh">
 									<h5 class="modal-title" id='ch'>Job Prerequisites</h5>
-									<button type="button" class="reqClose" data-dismiss="modal" aria-label="Close">
+									<button type="button" class="reqClose btn close" data-dismiss="modal" aria-label="Close">
 										<span class="reqClose" >&times;</span>
 									</button>
 								</div>
