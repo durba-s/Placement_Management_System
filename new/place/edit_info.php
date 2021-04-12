@@ -55,9 +55,10 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href='bootstrap/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="assets/css/def.css">
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href='bootstrap/css/bootstrap.css'>
+    <link rel="stylesheet" href="assets/css/def.css">
     <title>Student Dasboard</title>
 </head>
 <style type="text/css">
