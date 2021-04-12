@@ -126,7 +126,7 @@ $(document).ready(function() {
 					$result5=mysqli_query($con, $sql1);
 					echo "<table id='example' class='display' style='width:100%'>";
 								echo "<thead>";
-								echo "<tr style='background-color:#96b8ff;'>";
+								echo "<tr style='background-color:#d0c7ff;'>";
 								echo  "<th scope='col'>CourseID</th>";
 								echo  "<th scope='col'>CourseName</th>";
 								echo  "<th scope='col'>Credits</th>";
