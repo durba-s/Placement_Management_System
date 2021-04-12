@@ -256,14 +256,14 @@ if(isset($_POST['save1'])){
 								<div class="modal-header" id="mh">
 									<h5 class="modal-title" id='ch'>Job Prerequisites</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span class="reqClose" >&times;</span>
+										<span class="reqClose" id="reqClose">&times;</span>
 									</button>
 								</div>
 								<div class="modal-body" id="reqb"></div>
 						      </div>
 						<script type="text/javascript">
 							var reqModal = document.getElementById('reqModal');
-							var reqModalClose = document.getElementsByClassName("reqClose")[0];
+							var reqModalClose = document.getElementById('reqClose');
                             $('.picked').on('click', function() {
                                 console.log(this.id);
                                 jid = this.id;
@@ -272,11 +272,11 @@ if(isset($_POST['save1'])){
                                 });                                
                             });
 							reqModalClose.onclick = function() {
-								modal.style.display = "none";
+								reqModal.style.display = "none";
 							}
 							window.onclick = function(event) {
 								if (event.target == modal) {
-									modal.style.display = "none";
+									reqModal.style.display = "none";
 								}
 							}
 						</script>
