@@ -217,13 +217,14 @@ if(isset($_POST['save1'])){
 			     </div>
 				<br>
 				<?php
-                    $query="select t1.jid,t3.jobname from stud_wants t1,job t3 where t1.jid=t3.jid and t1.sid={$_SESSION['uid']} order by t3.jobname asc";
+                    $query="select t1.jid,t3.jobname,t3.salary from stud_wants t1,job t3 where t1.jid=t3.jid and t1.sid={$_SESSION['uid']} order by t3.jobname asc";
                     $result=mysqli_query($con,$query);
                     echo "<table id='example' class='table' style='width:100%'>";
                     echo "<thead>";
                     echo "<tr style='background-color:#e6ccff;'>";
                     echo  "<th scope='col'>Job ID</th>";
                     echo  "<th scope='col'>Job Name</th>";
+                    echo  "<th scope='col'>Salary</th>";
                     echo  "</tr>";
                     echo "</thead>";
                     $j=0;
