@@ -255,7 +255,7 @@ if(isset($_POST['save1'])){
                             $('.picked').on('click', function() {
                                 console.log(this.id);
                                 jid = this.id;
-                                $('#reqb').load('view_prereq.php?jid=10001',function(){
+                                $('#reqb').load('view_prereq.php?jid="$jid"',function(){
                                     reqModal.style.display = "block";
                                 });                                
                             });
