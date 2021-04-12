@@ -215,18 +215,18 @@ $(document).ready(function() {
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary" name="save2">Save changes</button>
                   <script type="text/javascript">
-                    var modal2 = document.getElementById("myModal111");
-                    var btn2= document.getElementById("iBtn");
-                    var span2 = document.getElementsByClassName("close111")[0];
-                    btn2.onclick = function() {
-                      modal2.style.display = "block";
+                    var modal12 = document.getElementById("myModal111");
+                    var btn12= document.getElementById("iBtn");
+                    var span12 = document.getElementsByClassName("close111")[0];
+                    btn12.onclick = function() {
+                      modal12.style.display = "block";
                     }
                     span2.onclick = function() {
-                      modal2.style.display = "none";
+                      modal12.style.display = "none";
                     }
                     window.onclick = function(event) {
                       if (event.target == modal) {
-                        modal2.style.display = "none";
+                        modal12.style.display = "none";
                       }
                     }
                   </script>
