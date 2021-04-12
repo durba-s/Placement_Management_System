@@ -71,6 +71,9 @@ if(isset($_POST['save1'])){
 					<li class="nav-item">
 						<a class="nav-link" href="stud_elig.php">Eligibility</a>
 					</li>
+				<li class="nav-item">
+					<a class="nav-link" href="jobquery.php">View Jobs</a>
+				</li>
 					<li class="nav-item">
 						<a class="nav-link" href="logout.php">Logout</a>
 					</li>
