@@ -79,12 +79,12 @@ $(document).ready(function() {
   background: #f8f2ff;
   border-radius: 50%;
   padding: 16px;
-  font-size: 20px;
+  font-size: 8px;
   border: none;
 }
 
 .dropbtn span{
-font-size: 1.5rem;
+font-size: 1rem;
 color: #9141fa
 }
 
@@ -165,7 +165,7 @@ color: #9141fa
                     <a href="logout.php"><span>Logout</span></a>
           </div>
         </div>
-        <img src="https://thumbs.dreamstime.com/b/solid-purple-gradient-user-icon-web-mobile-design-interface-ui-ux-developer-app-137467998.jpg" width="60px" height="60px" alt="">
+        <img src="https://thumbs.dreamstime.com/b/solid-purple-gradient-user-icon-web-mobile-design-interface-ui-ux-developer-app-137467998.jpg" width="40px" height="40px" alt="">
         <div>
           <h4>Hello</h4>
           <small>Admin</small>
@@ -199,7 +199,7 @@ color: #9141fa
 
        <!-- <div class="card-single">
           <div>
-            <?php echo"<h1>$jobcount</h1>"?>
+            <?php// echo"<h1>$jobcount</h1>"?>
             <span>Jobs</span>
           </div>
           <div>
