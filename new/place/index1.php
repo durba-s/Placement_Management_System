@@ -15,6 +15,20 @@ $user_data=check_login1($con);
 	<link rel="stylesheet" href="assets/css/def.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<title>Company Dasboard</title>
+			  <script src=" https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+
+
+
+  <script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );</script>
 </head>
 <body>
 	
@@ -46,7 +60,7 @@ $user_data=check_login1($con);
 		<div class="row flex-xl-nowrap">
 			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0;">
 				<div class="card">
-					<div class="card-body bg-light">
+					<div class="card" style="padding: 1rem;">
 						<h5 class="card-title">Company PROFILE</h5>
 						<img src="https://cdn4.iconfinder.com/data/icons/gradient-circle-blue/36/1014-512.png" style="display: block;
 						margin-left: auto;
@@ -66,7 +80,7 @@ $user_data=check_login1($con);
 						echo('</p>');
 						
 						?>
-						<a href="edit_comp_info.php" class="btn btn-primary">Edit company info</a>
+						<a href="edit_comp_info.php" class="btn btn-primary">Edit personal info</a>
 					</div>
 				</div>
 			</div>
@@ -79,7 +93,7 @@ $user_data=check_login1($con);
 				<?php
 				$query="select t1.jid,t1.jobname,t1.role,t1.salary FROM JOB t1,COMPANY t2 where t1.cid=t2.cid and t1.cid={$_SESSION['uid']}";
 				$result=mysqli_query($con,$query);
-				echo "<table class='table'>";
+				echo "<table id='example' class='display' style='width:100%'>";
 				echo "<thead>";
 				echo "<tr style='background-color:#96b8ff;'>";  
 				echo  "<th scope='col'>Job ID</th>";
@@ -90,10 +104,7 @@ $user_data=check_login1($con);
 				echo "</thead>";
 				$j=0;
 				while ($queryRow = $result->fetch_row()) {
-					if($j%2==0){
-						echo "<tr style='background-color:#dee8ff;'>";}
-						else{
-							echo "<tr style='background-color:#f5f8ff;'>";} 
+							echo "<tr>"; 
 							for($i = 0; $i < $result->field_count; $i++){
 								echo "<td>$queryRow[$i]</td>";
 							}

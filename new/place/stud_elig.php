@@ -14,11 +14,26 @@ $user_data=check_login($con);
 	<link rel="stylesheet" href='bootstrap/css/bootstrap.min.css'>
 	<link rel="stylesheet" href="assets/css/def.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src=" https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable( {
+				"pagingType": "full_numbers"
+			} );
+		} );  
+	</script>
 	<title>Student Dasboard</title>
 </head>
 <body>
 
-	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#9e36ff;">
+	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#390669;">
 		<a class="navbar-brand" href="#">Dashboard</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -40,26 +55,26 @@ $user_data=check_login($con);
 					<a class="nav-link" href="logout.php">Logout</a>
 				</li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
+			<!--<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search">
 				<button button type='button' class='btn btn-info' type="submit">Search</button>
-			</form>
+			</form>-->
 		</div>
 	</header>
 	<div class="container-fluid">
 		<div class="row flex-xl-nowrap">
-			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0;">
+			<div class="col-md-3 col-lg-2 bg-light" id="left-nav-bar" style="padding-left:0; padding-right:0; background: #7107b8; height: 100%;">
 				<div class="card">
-					<div class="card-body bg-light">
-						<h5 class="card-title">STUDENT PROFILE</h5>
+					<div class="card" style="padding: 1rem;">
+						<h5 class="card-title"><b>STUDENT PROFILE</b></h5>
 						<!--<img src="https://cdn3.iconfinder.com/data/icons/login-6/512/LOGIN-10-512.png" style="display: block;
 						margin-left: auto;
 						margin-right: auto;
 						width: 50%; border-radius: 50%;"><br> -->
-						<img src="https://cdn1.iconfinder.com/data/icons/basic-22/512/1041_boy_c-512.png" style="display: block;
-							margin-left: auto;
-							margin-right: auto;
-							width: 50%; border-radius: 50%"><br>
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnpJht7IsCBSynB61h752DAdwG_9zmcbTy8Q&usqp=CAU" style="display: block;
+						margin-left: auto;
+						margin-right: auto;
+						width: 50%; border-radius: 50%; border-style: solid;"><br>
 						<?php
 						echo('<p class="card-text"><b>ID Number: </b>');
 						echo $user_data['SID'];
@@ -93,7 +108,7 @@ $user_data=check_login($con);
 						echo('</p>');
 						echo('</p>');
 						?>
-						<a href="#" class="btn btn-primary">Edit personal info</a>
+						<a href="edit_info.php" class="btn btn-primary" style="background: #390669; color: white;">Edit personal info</a>
 					</div>
 				</div>
 
@@ -111,38 +126,34 @@ $user_data=check_login($con);
         #$view1="create view count_req as select jid, count(*) as prereq_count from job_req group by jid";
         #$view2="create or replace view stud_solve_req as select t1.jid, count(*) as courses_sat from job_req t1 join stud_course t2 where t2.sid={$_SESSION['uid']} and t2.courseid=t1.courseid and t2.grade>t1.min_grade group by t1.jid "
 				$query="select t2.jid as j,  t3.JOBNAME, t3.role, t3.salary from stud_course t1,job_req t2, job t3 where t1.sid={$_SESSION['uid']} and t2.courseid=t1.courseid and t2.min_grade<=t1.grade and t2.jid=t3.jid group by t2.jid HAVING
-count(*) in(select count(*) as cc from job_req group by jid having jid=j) order by t3.salary desc;";
+				count(*) in(select count(*) as cc from job_req group by jid having jid=j) order by t3.salary desc;";
 				$result=mysqli_query($con,$query);
-				echo "<table class='table'>";
+				echo "<table id='example' class='display' style='width:100%'>";
 				echo "<thead>";
 				echo "<tr style='background-color:#e6ccff;'>";
 				echo  "<th scope='col'>Job ID</th>";
 				echo  "<th scope='col'>Job Name</th>";
-        echo  "<th scope='col'>Role</th>";
-        echo  "<th scope='col'>Salary</th>";
+				echo  "<th scope='col'>Role</th>";
+				echo  "<th scope='col'>Salary</th>";
 				echo  "</tr>";
 				echo "</thead>";
 				$j=0;
 				while ($queryRow = $result->fetch_row()) {
-					if($j%2==0){
-						echo "<tr style='background-color:#f4f0fa;'>";}
-						else{
-							echo "<tr style='background-color:##f8f2fa;'>";}
-							for($i = 0; $i < $result->field_count; $i++){
-								echo "<td>$queryRow[$i]</td>";
+					echo "<tr>";
+					for($i = 0; $i < $result->field_count; $i++){
+						echo "<td>$queryRow[$i]</td>";
 
-							}
-							echo "</tr>";
-							$j=$j+1;
-						}
-						echo "</table>";
-						?>
+					}
+					echo "</tr>";
+				}
+				echo "</table>";
+				?>
 
-					</main>
-				</div>
-			</div>
+			</main>
+		</div>
+	</div>
 
 
-			<br>
-		</body>
-		</html>
+	<br>
+</body>
+</html>

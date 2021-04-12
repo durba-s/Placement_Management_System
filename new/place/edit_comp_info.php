@@ -48,7 +48,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<title>Company Dasboard</title>
 </head>
-<body>
+<body style="background: #edf0ff;">
 	
 	<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#2818de;">
 		<a class="navbar-brand" >Dashboard</a>
@@ -59,7 +59,7 @@
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link active-link" href="#">Home
+					<a class="nav-link active-link" href="index1.php">Home
 					</a>
 				</li>
 				<li class="nav-item">
@@ -201,6 +201,7 @@
                         <div class="input-group"> 
                             <br>
                             <button name="submit" class="btn btn-info">Save changes</button>
+                            <a class="nav-link" href="index1.php">Back</a>
                         </div>
                         </fieldset>
                     </form>
@@ -213,5 +214,3 @@
 			<br>
 		</body>
 		</html>
-
-
