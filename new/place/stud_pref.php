@@ -176,6 +176,7 @@ if(isset($_POST['save1'])){
 						</script>
 					   </div> 
 				    </div>
+				</div>
 				<br>
 				<div>
 					<button type='button' class='btn btn-info' id='gBtn'>Delete</button>
@@ -227,11 +228,12 @@ if(isset($_POST['save1'])){
  
 					</div>
 				</div>
+			</div>
 				<br>
 				<?php
                     $query="select t1.jid,t3.jobname from stud_wants t1,job t3 where t1.jid=t3.jid and t1.sid={$_SESSION['uid']} order by t3.jobname asc";
                     $result=mysqli_query($con,$query);
-                    echo "<table id='example' class='display' style='width:100%'>";
+                    echo "<table id='example' class='table' style='width:100%'>";
                     echo "<thead>";
                     echo "<tr style='background-color:#e6ccff;'>";
                     echo  "<th scope='col'>Job ID</th>";
