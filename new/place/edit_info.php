@@ -71,7 +71,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 </style>
 <body>
 
-    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#7107b8;">
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#390669;">
         <a class="navbar-brand" >Dashboard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -82,6 +82,9 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <li class="nav-item active">
                     <a class="nav-link active-link" href="index.php">Home
                     </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="stud_courses.php">Courses</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="stud_pref.php">Preferences</a>
@@ -98,7 +101,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     <div class="container-fluid" style="background: #f9f2ff;">   
         <div class="row flex-xl-nowrap">
             <main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
-                <h3>Edit Personal Info</h3>
+                <h3><b>Edit Profile Information</b></h3>
                 <div style="color: green;">
                     <?php
                         if(isset($_SESSION['success'])){
@@ -111,39 +114,39 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     <form method="POST" action="">
                       <fieldset>
                         <div class="form-group row">
-                            <label for="name" class="col-1 col-form-label">Name: </label>
+                            <label for="name" class="col-1 col-form-label"><b>Name: </b></label>
                             <input type="text" readonly="" class="col-2 form-control-plaintext" id="name" value="<?=$name ?>">
                         </div>
                         <div class="form-group row">
-                            <label for="idno" class="col-2 col-form-label">ID Number: </label>
+                            <label for="idno" class="col-2 col-form-label"><b>ID Number: </b></label>
                               <input type="text" readonly="" class="col-2 form-control-plaintext" id="idno" value="<?=$_SESSION['uid'] ?>">
-                            <label for="branch" class="col-2 col-form-label">Branch: </label>
+                            <label for="branch" class="col-2 col-form-label"><b>Branch: </b></label>
                               <input type="text" readonly="" class="col-2 form-control-plaintext" id="branch" value="<?=$branch ?>">
                         </div>
                         <div class="form-group row">
-                            <label for="cg" class="col-2 col-form-label">CGPA: </label>
+                            <label for="cg" class="col-2 col-form-label"><b>CGPA: </b></label>
                                 <input type="text" readonly="" class="col-2 form-control-plaintext" id="cg" value="<?=$cg ?>">
-                                <label for="yoa" class="col-2 col-form-label">Year of Admission: </label>
+                                <label for="yoa" class="col-2 col-form-label"><b>Year of Admission: </b></label>
                                 <input type="text" readonly="" class="col-1 form-control-plaintext" id="yoa" value="<?=$yoa ?>">
                         </div>
                         <div class="form-group">
-                          <label for="hno">House no.</label>
+                          <label for="hno"><b>House no.</b></label>
                           <input type="number" class=" col-6 form-control" name="hno" id="hno" aria-describedby="emailHelp" value="<?=$hno?>">
                         </div>
                         <div class="form-group">
-                          <label for="city">City</label>
+                          <label for="city"><b>City</b></label>
                           <input type="text" class=" col-6 form-control" name="city" id="city" value="<?=$city?>">
                         </div>
                         <div class="form-group">
-                          <label for="state">State</label>
+                          <label for="state"><b>State</b></label>
                           <input type="text" class="col-6 form-control" name="state" id="state" value="<?=$state?>">
                         </div>
                         <div class="form-group">
-                          <label for="addr">PIN</label>
+                          <label for="addr"><b>PIN</b></label>
                           <input type="number" class="col-6 form-control" name="pin" id="pin" value="<?=$pin?>">
                         </div>
                         <div class="form-group col-4">
-                            <span class="col-2">Contact no.s: </span>
+                            <span class="col-2"><b>Contact no.s: </b></span>
                             <br/>
                             <ul class="list-group">
                             <?php
