@@ -18,21 +18,43 @@ if(isset($_POST['save1'])){
 	mysqli_query($con, $sql1);
 	header("Refresh:0");
 }
+
+$dataPoints = array();
+$q="select t2.branch,count(*) from stud_gets t1,student t2 where t1.sid=t2.sid group by t2.branch";
+$r=mysqli_query($con,$q);
+while ($qr = $r->fetch_row()){
+	array_push($dataPoints, array("y"=> $qr[1], "label"=> $qr[0]));
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="styles1.css">
 	<link rel="stylesheet" href='bootstrap/css/bootstrap.css'>
 	<link rel="stylesheet" href="assets/css/def.css">
 	<script src=" https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
+	<script>
+		window.onload = function () {
 
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				exportEnabled: true,
+  theme: "dark1", // "light1", "light2", "dark1", "dark2"
+  data: [{
+  	type: "column", 
+  	dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+  }]
+});
+			chart.render();
 
+		}
+	</script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -53,7 +75,7 @@ if(isset($_POST['save1'])){
 	</style>
 	<body>
 
-		<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#390669;">
+		<header class="navbar navbar-expand navbar-dark flex-column flex-md-row shadow text-light" style="background-color:#390669; width: 100%; left: 0px;">
 			<a class="navbar-brand" >Dashboard</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -65,15 +87,19 @@ if(isset($_POST['save1'])){
 						<a class="nav-link active-link" href="#">Home
 						</a>
 					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="stud_courses.php">Courses</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="stud_pref.php">Preferences</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="stud_elig.php">Eligibility</a>
 					</li>
-				<li class="nav-item">
-					<a class="nav-link" href="jobquery.php">View Jobs</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="jobquery.php">View Jobs</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="logout.php">Logout</a>
 					</li>
@@ -161,164 +187,117 @@ if(isset($_POST['save1'])){
 					</div>
 				</div>
 			</div>
-			<main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
-				<h3>Courses Taken</h3>
-				<br>
-				<div class="row">
-
-					<button type='button' class='btn btn-info col-3 m-2' id='myBtn'  <?php if($result11->num_rows>0) {?> disabled="disabled" <?php } ?> >Add Course</button>
-					<div id="myModal" class="modal" >
-						<div class="modal-dialog" id="m"role="document">
-							<div class="modal-content" id="mc">
-								<div class="modal-header" id="mh">
-									<h5 class="modal-title" id='ch'>Add Courses</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span class="close" >&times;</span>
-									</button>
-								</div>
-
-								<form method = "POST" id="f">
-								<div class="modal-body" id="mb">
-										<?php
-										echo "<label for='.cou.'>Course Name  : </label>";
-										$query = "select * from course where courseid not in(select courseid from stud_course where sid={$_SESSION['uid']}) order by name asc";
-										$result=mysqli_query($con,$query);
-										echo "<select name='course' id='course'>";
-										while ($queryRow = $result->fetch_row()) {
-											echo '<option value="'.$queryRow[0].'">'.$queryRow[1].'</option>';
-										}
-										echo "</select>";
-										?>
-										<br>
-										<?php
-										echo "<label for='.gra.'>Grade  : </label>";
-										echo "<select name='grade' id='grade'>";
-										for($gr=4;$gr<=10;$gr++){
-											echo '<option value="'.$gr.'">'.$gr.'</option>';
-										}
-										echo "</select>";
-
-										?>
-									</div>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" name="save">Save changes</button>
-									</div>
-								</form>
-
-							</div>
-						</div>
-						<script type="text/javascript">
-							var modal = document.getElementById("myModal");
-							var btn = document.getElementById("myBtn");
-							var span = document.getElementsByClassName("close")[0];
-							btn.onclick = function() {
-								modal.style.display = "block";
-							}
-							span.onclick = function() {
-								modal.style.display = "none";
-							}
-							window.onclick = function(event) {
-								if (event.target == modal) {
-									modal.style.display = "none";
-								}
-							}
-						</script>
-
+			<main
+			style="margin-top: 2px;
+			padding: 0.5rem 1rem;
+			width: 100%;
+			background: #faf5ff;
+			min-height: calc(100vh - 2px);">
+			<div class="cards">
+				<div class="card-single">
+					<div>
+						<h1>abc</h1>
+						<span>Students</span>
 					</div>
-					<button type='button' class='btn btn-info col-2 m-2' id='gBtn' <?php if($result11->num_rows>0) {?> disabled="disabled" <?php } ?>>Edit Grade</button>
-					<div id="myModal1" class="modal" >
-						<div class="modal-dialog" id="m1"role="document">
-							<div class="modal-content" id="mc1">
-								<div class="modal-header" id="mh1">
-									<h5 class="modal-title" id='ch1'>Edit Course Grade</h5>
-									<button type="button" class="close1" data-dismiss="modal" aria-label="Close" >
-										<span class="close1" >&times;</span>
-									</button>
-								</div>
-
-								<form method = "POST" id="f1">
-								<div class="modal-body" id="mb1">
-										<?php
-										echo "<label for='.cou.'>Course Name  : </label>";
-										$query1 = "select * from course where courseid in(select courseid from stud_course where sid={$_SESSION['uid']}) order by name asc";
-										$result1=mysqli_query($con,$query1);
-										echo "<select name='course1' id='course1'>";
-										while ($queryRow1= $result1->fetch_row()) {
-											echo '<option value="'.$queryRow1[0].'">'.$queryRow1[1].'</option>';
-										}
-										echo "</select>";
-										?>
-										<br>
-										<?php
-										echo "<label for='.gra.'>Grade  : </label>";
-										echo "<select name='grade1' id='grade1'>";
-										for($gr1=4;$gr1<=10;$gr1++){
-											echo '<option value="'.$gr1.'">'.$gr1.'</option>';
-										}
-										echo "</select>";
-
-										?>
-									</div>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" name="save1">Save changes</button>
-										<script type="text/javascript">
-											var modal1 = document.getElementById("myModal1");
-											var btn1= document.getElementById("gBtn");
-											var span1 = document.getElementsByClassName("close1")[0];
-											btn1.onclick = function() {
-												modal1.style.display = "block";
-											}
-											span1.onclick = function() {
-												modal1.style.display = "none";
-											}
-											window.onclick = function(event) {
-												if (event.target == modal) {
-													modal.style.display = "none";
-												}
-											}
-										</script>
-									</div>
-								</form>
-
-							</div>
+					<div>
+						<span class="las la-users"></span>
+					</div>
+				</div>
+				<div class="card-single">
+					<div>
+						<h1>abc</h1>
+						<span>Students</span>
+					</div>
+					<div>
+						<span class="las la-users"></span>
+					</div>
+				</div>
+				<div class="card-single">
+					<div>
+						<h1>abc</h1>
+						<span>Students</span>
+					</div>
+					<div>
+						<span class="las la-users"></span>
+					</div>
+				</div>
+				<div class="card-single">
+					<div>
+						<h1>abc</h1>
+						<span>Students</span>
+					</div>
+					<div>
+						<span class="las la-users"></span>
+					</div>
+				</div>
+				<div class="card-single">
+					<div>
+						<h1>abc</h1>
+						<span>Students</span>
+					</div>
+					<div>
+						<span class="las la-users"></span>
+					</div>
+				</div>
+			</div>
+			<div class="recent-grid" >
+				<div class="projects">
+					<div class="card">
+						<div class="card-header">
+							<h3><b>Branch Wise Placement Statistics</b></h3>
 						</div>
 
-
+						<div class="card-body">
+							<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+							<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+						</div>
 					</div>
 				</div>
 
-				<br>
-				<div>
-					<?php
-					$query5="select c.courseid,c.name,c.creds,t1.grade from stud_course t1,student t2,course c where t1.sid=t2.sid and c.courseid=t1.courseid and t2.sid={$_SESSION['uid']} order by c.name asc";
-					$result5=mysqli_query($con,$query5);
-					echo "<table id='example' class='display' style='width:100%'>";
-					echo "<thead>";
-					echo "<tr style='background-color:#e6ccff;'>";
-					echo  "<th scope='col'>CourseID</th>";
-					echo  "<th scope='col'>CourseName</th>";
-					echo  "<th scope='col'>Credits</th>";
-					echo  "<th scope='col'>Grade</th>";
-					echo  "</tr>";
-					echo "</thead>";
-					$j=0;
-					while ($queryRow = $result5->fetch_row()) {
 
-						echo "<tr>";
-						for($i = 0; $i < $result5->field_count; $i++){
-							echo "<td>$queryRow[$i]</td>";
-						}
-						echo "</tr>";
-						$j=$j+1;
-					}
-					echo "</table>";
-					?>
+				<div class="projects">
+					<div class="card">
+						<div class="card-header">
+							<h3><b>Pqrs</b></h3>
+						</div>
 
-				</div>
-			</main>
-		</div>
-	</div>
-	<br>
+						<div class="card-body">
+							<div id="piechart"></div>
+						</div>
+					</div>
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+					<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+	var data = google.visualization.arrayToDataTable([
+		['Task', 'Hours per Day'],
+		['Work', 8],
+		['Eat', 2],
+		['TV', 4],
+		['Gym', 2],
+		['Sleep', 8]
+		]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'My Average Day', 'width':300, 'height':370};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
+
+
+</div>
+</main>
+</div>
+</div>
+<br>
 
 </body>
 </html>

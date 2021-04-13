@@ -46,6 +46,9 @@ if(isset($_POST['save1'])){
 					<a class="nav-link" href="index.php">Home
 					</a>
 				</li>
+				<li class="nav-item">
+						<a class="nav-link" href="stud_courses.php">Courses</a>
+				</li>
 				<li class="nav-item active">
 					<a class="nav-link active-link " href="#">Preferences</a>
 				</li>
@@ -120,8 +123,12 @@ if(isset($_POST['save1'])){
 			<main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 content">
 				<h3>My Job Preferences</h3>
 				<br>
+				<?php
+				$querynp="select * FROM  STUD_WANTS WHERE sid={$_SESSION['uid']}";
+				$resultnp=mysqli_query($con,$querynp);
+				?>
 				<div class="row">
-					<button type='button' class='btn btn-info col-3 m-2' id='myBtn' >Add Job Preference</button>
+					<button type='button' class='btn btn-info col-3 m-2' id='myBtn' <?php if($resultnp->num_rows>=5) {?> disabled="disabled" <?php } ?>>Add Job Preference</button>
 					<div id="myModal" class="modal" >
 						<div class="modal-dialog modal-lg" id="m"role="document">
 							<div class="modal-content" id="mc">
