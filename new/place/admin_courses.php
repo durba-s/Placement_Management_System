@@ -77,7 +77,7 @@ color: #9141fa
    <input type="checkbox" id="nav-toggle">
   <div class="sidebar1">
     <div class="sidebar-brand1">
-      <h2><span class="lab la-product-hunt"></span><span>Placement Management System</span></h2>
+      <h2><span></span><span>Placement Management System</span></h2>
     </div>
 
     <div class="sidebar-menu1" >
@@ -98,10 +98,10 @@ color: #9141fa
           <a href="admin_job.php"><span class="las la-receipt"></span><span>Jobs</span></a>
         </li>
         <li>
-          <a href=""><span class="las la-search"></span><span>Query</span></a>
+          <a href="admin_query.php"><span class="las la-search"></span><span>Query</span></a>
         </li>
         <li>
-          <a href=""><span class="las la-plus-circle"></span><span>Add Data</span></a>
+          <a href="admin_add.php"><span class="las la-plus-circle"></span><span>Add Data</span></a>
         </li>
       </ul>
     </div>
