@@ -361,6 +361,9 @@ $msal=round($msal,2);
 
           ?>
         </div>
+        <div class="modal-footer">
+              
+        </div>
         <script type="text/javascript">
           var modal1 = document.getElementById("myModal1");
           var btn1= document.getElementById("gBtn");
