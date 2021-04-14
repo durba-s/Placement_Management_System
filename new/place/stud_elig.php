@@ -132,7 +132,7 @@ $user_data=check_login($con);
         #$view1="create view count_req as select jid, count(*) as prereq_count from job_req group by jid";
         #$view2="create or replace view stud_solve_req as select t1.jid, count(*) as courses_sat from job_req t1 join stud_course t2 where t2.sid={$_SESSION['uid']} and t2.courseid=t1.courseid and t2.grade>t1.min_grade group by t1.jid "
 				$query="select t2.jid as j,  t3.JOBNAME, t3.role, t3.salary from stud_course t1,job_req t2, job t3 where t1.sid={$_SESSION['uid']} and t2.courseid=t1.courseid and t2.min_grade<=t1.grade and t2.jid=t3.jid group by t2.jid HAVING
-				count(*) in(select count(*) as cc from job_req group by jid having jid=j) order by t3.salary desc;";
+				count(*) in(select count(*) as cc from job_req group by jid having jid=j) order by t3.salary desc";
 				$result=mysqli_query($con,$query);
 				echo "<table id='example' class='display' style='width:100%'>";
 				echo "<thead>";

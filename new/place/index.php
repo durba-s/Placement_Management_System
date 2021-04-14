@@ -4,6 +4,20 @@ session_start();
 include("connection.php");
 include("functions.php");
 $user_data=check_login($con);
+
+$cg=$user_data['CG'];
+$cg=round($cg,2);
+
+$query="SELECT count(*) FROM `stud_course` group by sid having sid={$_SESSION['uid']}";
+$result=mysqli_query($con,$query);
+$queryRow= $result->fetch_row();
+$crscount=$queryRow[0];
+
+$query="select t2.jid as j,  t3.JOBNAME, t3.role, t3.salary from stud_course t1,job_req t2, job t3 where t1.sid={$_SESSION['uid']} and t2.courseid=t1.courseid and t2.min_grade<=t1.grade and t2.jid=t3.jid group by t2.jid HAVING
+				count(*) in(select count(*) as cc from job_req group by jid having jid=j) order by t3.salary desc";
+$result=mysqli_query($con,$query);
+$jobcount=mysqli_num_rows($result);
+
 if(isset($_POST['save'])){
 	$crs=$_POST['course'];
 	$gde=$_POST['grade'];
@@ -22,6 +36,8 @@ if(isset($_POST['save1'])){
 $dataPoints = array();
 $q="select t2.branch,count(*) from stud_gets t1,student t2 where t1.sid=t2.sid group by t2.branch";
 $r=mysqli_query($con,$q);
+
+
 while ($qr = $r->fetch_row()){
 	array_push($dataPoints, array("y"=> $qr[1], "label"=> $qr[0]));
 }
@@ -196,47 +212,31 @@ while ($qr = $r->fetch_row()){
 			<div class="cards">
 				<div class="card-single">
 					<div>
-						<h1>abc</h1>
-						<span>Students</span>
+						<?php echo "<h1>$crscount</h1>";?>
+
+						<span>Courses Completed</span>
 					</div>
 					<div>
-						<span class="las la-users"></span>
-					</div>
-				</div>
-				<div class="card-single">
-					<div>
-						<h1>abc</h1>
-						<span>Students</span>
-					</div>
-					<div>
-						<span class="las la-users"></span>
+						<span class="las la-tasks"></span>
 					</div>
 				</div>
 				<div class="card-single">
 					<div>
-						<h1>abc</h1>
-						<span>Students</span>
+						<?php echo "<h1>$cg</h1>";?>
+						<span>CGPA</span>
 					</div>
 					<div>
-						<span class="las la-users"></span>
-					</div>
-				</div>
-				<div class="card-single">
-					<div>
-						<h1>abc</h1>
-						<span>Students</span>
-					</div>
-					<div>
-						<span class="las la-users"></span>
+						<span class="las la-calculator"></span>
 					</div>
 				</div>
 				<div class="card-single">
 					<div>
-						<h1>abc</h1>
-						<span>Students</span>
+
+						<?php echo "<h1>$jobcount</h1>";?>
+						<span>Jobs Eligible For</span>
 					</div>
 					<div>
-						<span class="las la-users"></span>
+						<span class="las la-industry"></span>
 					</div>
 				</div>
 			</div>
