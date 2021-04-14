@@ -6,6 +6,17 @@ include("functions.php");
 
 $user_data=check_login2($con);
 
+if(isset($_POST['add'])){
+  $q1="insert into company values({$_POST['id']},\"{$_POST['name']}\",\"{$_POST['city']}\",\"{$_POST['state']}\",\"{$_POST['pwd']}\")";
+  $r1 = mysqli_query($con, $q1);
+  $q2="insert into comp_cont values({$_POST['id']},{$_POST['cont']})";
+  $r2 = mysqli_query($con, $q2);
+  $_SESSION['message']="Data inserted successfully";
+  unset($_POST['add']);
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +41,21 @@ $user_data=check_login2($con);
       } );
     } );  
   </script>
-    <script type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function() {
       $('#example1').DataTable( {
         "pagingType": "full_numbers"
       } );
     } );  
+  </script>
+  <script type="text/javascript">
+
+    function copyText() {
+      src = document.getElementById("source");
+      dest = document.getElementById("dest");
+      dest.value = "abc"+src.value;
+    }
+
   </script>
   <style>
     .dropbtn {
@@ -140,237 +160,71 @@ $user_data=check_login2($con);
 
   <main>
 
-    <h3>Search Details</h3>
-    <div>
-      <form method = "POST" id="f2">
-        <label for='.pre.'>Search details for : </label>
-        <select name='role' id='role'>
-          <option value="Student">Student</option>
-          <option value="Company">Company</option>
-          <option value="Job">Job</option>
-
-        </select>
-        <label for="new">ID: </label>
-        <input name="new" type="number" id="new" required>
-
-        <button type="submit" class="btn btn-primary" name="search" >Search</button>
-      </form>
-    </div>
+    <h3>Add Company Data</h3>
     <?php
-    if(isset($_POST['search'])){
-      echo    '<div class="card" style="padding: 1rem; line-height: 1.5rem;">';
-      if($_POST['role']=='Company'){
-        $id=$_POST['new'];
-        $query = "select * from company where cid={$id} limit 1";
-        $result = mysqli_query($con,$query);
-        $result1 = mysqli_query($con,$query);
-
-
-        if($result1->fetch_row()>0){
-          $user_data = mysqli_fetch_assoc($result);
-          echo '<dl class="row">';
-          echo '<dt class="col-sm-3">Company ID:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['CID']}</dd>";
-          echo '<dt class="col-sm-3">Name:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['NAME']}</dd>";
-          echo '<dt class="col-sm-3">City:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['CITY']}</dd>";
-          echo '<dt class="col-sm-3">State:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['STATE']}</dd>";
-
-          $i=1;
-          $cont_query = "select contact from comp_cont where cid={$id}";
-          $cont_res = mysqli_query($con, $cont_query);
-          while($data = $cont_res->fetch_row()){
-            echo "<dt class='col-sm-3'>Contact No $i:</dt>";
-            echo "<dd class='col-sm-9'>{$data[0]}</dd>";
-            $i=$i+1;
-          }
-          echo '</dl>';
-          echo "<b>Jobs Offered</b>";
-          $job_query = "select jid,jobname,salary from job where cid={$id}";
-          $job_res = mysqli_query($con, $job_query);
-          echo "<table id='example' class='display' style='width:100%'>";
-          echo "<thead>";
-          echo "<tr style='background-color:#d0c7ff;'>";
-          echo  "<th scope='col'>Job ID</th>";
-          echo  "<th scope='col'>Job Name</th>";
-          echo  "<th scope='col'>Annual Salary</th>";
-          echo  "</tr>";
-          echo "</thead>";
-          $j=0;
-          while ($queryRow = $job_res->fetch_row()) {
-            echo "<tr>";
-            for($i = 0; $i < $job_res->field_count; $i++){
-              echo "<td>$queryRow[$i]</td>";
-            }
-            echo "</tr>";
-            $j=$j+1;
-          }
-          echo "</table>";
-
-        }
-        else{
-          echo "No such company exists";
-        }
-      }
-      else if($_POST['role']=='Student'){
-        $id=$_POST['new'];
-        $query = "select * from student where sid={$id} limit 1";
-        $result = mysqli_query($con,$query);
-        $result1 = mysqli_query($con,$query);
-        $cont_query = "select phone_no from stud_phone where sid={$id}";
-        $cont_res = mysqli_query($con, $cont_query);
-
-        if($result1->fetch_row()>0){
-          $user_data = mysqli_fetch_assoc($result);
-          echo '<dl class="row">';
-          echo '<dt class="col-sm-3">Student ID:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['SID']}</dd>";
-          echo '<dt class="col-sm-3">Name:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['NAME']}</dd>";
-          echo '<dt class="col-sm-3">Email:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['EMAIL']}</dd>";
-          echo '<dt class="col-sm-3">Branch:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['BRANCH']}</dd>";
-          echo '<dt class="col-sm-3">Year of admission:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['YEAR']}</dd>";
-          echo '<dt class="col-sm-3">CG:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['CG']}</dd>";
-          echo '<dt class="col-sm-3">House No:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['HOUSENO']}</dd>";
-          echo '<dt class="col-sm-3">City:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['CITY']}</dd>";
-          echo '<dt class="col-sm-3">State:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['STATE']}</dd>";
-          echo '<dt class="col-sm-3">PIN:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['PIN']}</dd>";
-          $i=1;
-          $cont_query = "select phone_no from stud_phone where sid={$id}";
-          $cont_res = mysqli_query($con, $cont_query);
-          $cont_res = mysqli_query($con, $cont_query);
-          while($data = $cont_res->fetch_row()){
-            echo "<dt class='col-sm-3'>Contact No $i:</dt>";
-            echo "<dd class='col-sm-9'>{$data[0]}</dd>";
-            $i=$i+1;
-          }
-          $query11="select t1.jid,t2.jobname,t2.salary FROM  STUD_GETS t1,job t2 WHERE t1.sid={$id} and t2.jid=t1.jid ";
-            $result11=mysqli_query($con,$query11);
-            if($result11 && mysqli_num_rows($result11) > 0)
-            {
-              echo '<dt class="col-sm-3">Placement Status:</dt>';
-              echo "<dd class='col-sm-9'>Placed</dd>";
-              $queryRow11= $result11->fetch_row();
-              echo '<dt class="col-sm-3">Job ID:</dt>';
-              echo "<dd class='col-sm-9'>{$queryRow11[0]}</dd>";
-              echo '<dt class="col-sm-3">Job Name:</dt>';
-              echo "<dd class='col-sm-9'>{$queryRow11[1]}</dd>";
-              echo '<dt class="col-sm-3">Annual Salary: </dt>';
-              echo "<dd class='col-sm-9'>{$queryRow11[2]}</dd>";
-            }
-            else{
-              echo '<dt class="col-sm-3">Placement Status:</dt>';
-              echo "<dd class='col-sm-9'>Not Placed</dd>";
-
-            }
-          echo '</dl>';
-
-
-        }
-        else{
-          echo "No such student exists";
-        }
-
-      }
-      else {
-        $id=$_POST['new'];
-        $query = "select * from job where jid={$id} limit 1";
-        $result = mysqli_query($con,$query);
-        $result1 = mysqli_query($con,$query);
-
-
-        if($result1->fetch_row()>0){
-          $user_data = mysqli_fetch_assoc($result);
-          echo '<dl class="row">';
-          echo '<dt class="col-sm-3">Job ID:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['JID']}</dd>";
-          echo '<dt class="col-sm-3">Name:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['JOBNAME']}</dd>";
-          echo '<dt class="col-sm-3">Salary:</dt>';
-          echo "<dd class='col-sm-9'>{$user_data['SALARY']}</dd>";
-
-          $i=1;
-          $cont_query = "select * from company where cid={$user_data['CID']}";
-          $cont_res = mysqli_query($con, $cont_query);
-          $cont_data=mysqli_fetch_assoc($cont_res);
-          echo '<dt class="col-sm-3">Company ID:</dt>';
-          echo "<dd class='col-sm-9'>{$cont_data['CID']}</dd>";
-          echo '<dt class="col-sm-3">Company Name:</dt>';
-          echo "<dd class='col-sm-9'>{$cont_data['NAME']}</dd>";
-
-          echo '</dl>';
-          echo "<b>Prerequisite Courses</b>";
-          $sql1="select t1.courseid,t2.name,t2.creds,t1.min_grade from job_req t1,course t2 where jid={$id} and t1.courseid=t2.courseid";
-          $result5=mysqli_query($con, $sql1);
-          echo "<table id='example' class='display' style='width:100%'>";
-          echo "<thead>";
-          echo "<tr style='background-color:#d0c7ff;'>";
-          echo  "<th scope='col'>CourseID</th>";
-          echo  "<th scope='col'>CourseName</th>";
-          echo  "<th scope='col'>Credits</th>";
-          echo  "<th scope='col'>Min Grade</th>";
-          echo  "</tr>";
-          echo "</thead>";
-          $j=0;
-          while ($queryRow = $result5->fetch_row()) {
-            echo "<tr>";
-            for($i = 0; $i < $result5->field_count; $i++){
-              echo "<td>$queryRow[$i]</td>";
-            }
-            echo "</tr>";
-            $j=$j+1;
-          }
-          echo "</table>";
-
-          echo "<b>Selects</b>";
-          $sql11="select t1.sid,t2.name,t2.cg,t2.branch,t1.pdate,t2.email from stud_gets t1,student t2 where jid={$_SESSION['jo1']} and t1.sid=t2.sid order by t1.pdate desc";
-          $result51=mysqli_query($con, $sql11);
-          echo "<table id='example1' class='display' style='width:100%'>";
-                echo "<thead>";
-                echo "<tr style='background-color:#d0c7ff;'>";
-                echo  "<th scope='col'>StudentID</th>";
-                echo  "<th scope='col'>Name</th>";
-                echo  "<th scope='col'>CG</th>";
-                echo  "<th scope='col'>Branch</th>";
-                echo  "<th scope='col'>Date Placed</th>";
-                echo  "<th scope='col'>Email</th>";
-                echo  "</tr>";
-                echo "</thead>";
-                $j=0;
-                while ($queryRow1 = $result51->fetch_row()) {
-                      echo "<tr>";
-                      echo "<td>$queryRow1[0]</td>";
-                      echo "<td>$queryRow1[1]</td>";
-                      echo "<td>$queryRow1[2]</td>";
-                      echo "<td>$queryRow1[3]</td>";
-                      echo "<td>$queryRow1[4]</td>";
-                      echo "<td>$queryRow1[5]</td>";
-
-                      echo "</tr>";}
-                      $j=$j+1;
-                    echo "</table>";
-
-        }
-        else{
-          echo "No such Job exists";
-        }
-      }
-      echo "</div>";
-    }
+    $q="select cid from company order by cid desc limit 1";
+    $r = mysqli_query($con,$q);
+    $data = $r->fetch_row();
+    $id=$data[0];
+    $id=$id+1;
+    $pass="abc".$id;
     ?>
+    <div>
+      <div class="card" style="padding: 1rem; border: 1px solid;
+      box-shadow: 5px 10px 8px #888888;">
+      <form method="POST">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Company Name" required>
+          </div>
 
-  </main>
-</div>
+          <div class="col-md-4 mb-3">
+            <label for="id">ID</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+              </div>
+              <input type="text" id="id" name="id" readonly="" placeholder="User ID" aria-describedby="inputGroupPrepend" value="<?=$id ?>" required>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="pwd">Password</label>
+            <input type="text" id="pwd" class="form-control" name="pwd" value="<?=$pass ?>" readonly="" placeholder="Password" required style="background-color: white">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" name="state" placeholder="State" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="cont">Contact No</label>
+            <input type="text" id="cont" name="cont" class="form-control" placeholder="Contact No." maxlength="10" required>
+          </div>
+        </div>
+        <button class="btn btn-primary" name="add" type="submit">Add</button>
+      </form>
+      <?php
+
+      if(isset($_SESSION['message'])){
+        echo "<br>";
+        echo "<font color='green'>Data inserted successfully</font>";
+        unset($_SESSION['message']);
+      }
+
+      ?>
+
+
+    </div>
+
+  </div>
+
+</main>
 
 </body>
 </html>

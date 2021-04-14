@@ -158,7 +158,8 @@ $user_data=check_login2($con);
     </div>
     <?php
     if(isset($_POST['search'])){
-      echo    '<div class="card" style="padding: 1rem; line-height: 1.5rem;">';
+      echo    '<div class="card" style="padding: 1rem; line-height: 1.5rem; border: 1px solid;
+      box-shadow: 5px 10px 8px #888888;">';
       if($_POST['role']=='Company'){
         $id=$_POST['new'];
         $query = "select * from company where cid={$id} limit 1";
@@ -270,7 +271,8 @@ $user_data=check_login2($con);
             }
             else{
               echo '<dt class="col-sm-3">Placement Status:</dt>';
-              echo "<dd class='col-sm-9'>Not Placed</dd>";
+              echo "<dd class='col-sm-9'>Not Placed  <button class='btn btn-info' id='gBtn' name='gBtn' name='edit'>Edit Status</button></dd>";
+
 
             }
           echo '</dl>';
@@ -368,6 +370,61 @@ $user_data=check_login2($con);
       echo "</div>";
     }
     ?>
+
+<div id="myModal1" class="modal" >
+            <div class="modal-dialog modal-lg" id="m"role="document">
+              <div class="modal-content" id="mc1">
+                <div class="modal-header" id="mh1">
+                  <h5 class="modal-title" id='ch1'>Edit Placement Status</h5>
+                  <button type="button" class="btn close1" data-dismiss="modal" aria-label="Close" >
+                    <span class="close1" >&times;</span>
+                  </button>
+                </div>
+
+                <form method = "POST" id="f1">
+                <div class="modal-body" id="mb1">
+                    <?php
+                    echo "<label for='.cou.'><b>Job Name : </b></label>";
+                    $query1 = "select * from job order by jobname asc";
+                    $result1=mysqli_query($con,$query1);
+                    echo "<select name='job1' id='job1'>";
+                    while ($queryRow1= $result1->fetch_row()) {
+                      echo '<option value="'.$queryRow1[0].'">'.$queryRow1[0].' '.$queryRow1[2].'</option>';
+                    }
+                    echo "</select>";
+                    ?>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <label for="date"><b>Placed on : </b></label>
+                    <input type="date" id="pdate" name="pdate" required>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" name="save1">Save changes</button>
+                    <script type="text/javascript">
+                      var modal1 = document.getElementById("myModal1");
+                      var btn1= document.getElementById("gBtn");
+                      var span1 = document.getElementsByClassName("close1")[0];
+                      btn1.onclick = function() {
+                        modal1.style.display = "block";
+                      }
+                      span1.onclick = function() {
+                        modal1.style.display = "none";
+                      }
+                      window.onclick = function(event) {
+                        if (event.target == modal) {
+                          modal1.style.display = "none";
+                        }
+                      }
+                    </script>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+
+
+          </div>
 
   </main>
 </div>
