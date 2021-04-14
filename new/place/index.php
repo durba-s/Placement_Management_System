@@ -14,7 +14,7 @@ $queryRow= $result->fetch_row();
 $crscount=$queryRow[0];
 
 $query="select t2.jid as j,  t3.JOBNAME, t3.role, t3.salary from stud_course t1,job_req t2, job t3 where t1.sid={$_SESSION['uid']} and t2.courseid=t1.courseid and t2.min_grade<=t1.grade and t2.jid=t3.jid group by t2.jid HAVING
-				count(*) in(select count(*) as cc from job_req group by jid having jid=j) order by t3.salary desc";
+count(*) in(select count(*) as cc from job_req group by jid having jid=j) order by t3.salary desc";
 $result=mysqli_query($con,$query);
 $jobcount=mysqli_num_rows($result);
 
@@ -115,6 +115,9 @@ while ($qr = $r->fetch_row()){
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="jobquery.php">View Jobs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="jobfilter.php">Filter Jobs</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="logout.php">Logout</a>

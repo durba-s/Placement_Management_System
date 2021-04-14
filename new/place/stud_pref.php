@@ -47,7 +47,7 @@ if(isset($_POST['save1'])){
 					</a>
 				</li>
 				<li class="nav-item">
-						<a class="nav-link" href="stud_courses.php">Courses</a>
+					<a class="nav-link" href="stud_courses.php">Courses</a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link active-link " href="#">Preferences</a>
@@ -57,6 +57,9 @@ if(isset($_POST['save1'])){
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="jobquery.php">View Jobs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="jobfilter.php">Filter Jobs</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="logout.php">Logout</a>
@@ -139,44 +142,44 @@ if(isset($_POST['save1'])){
 									</button>
 								</div>
 								<form method = "POST" id="f">
-                                    <div class="modal-body" id="mb">
+									<div class="modal-body" id="mb">
 										<?php
-                                            echo "<label for='.pref.'>Job Name : </label>";
-                                            $query = "select jid,jobname from job where jid not in(select jid from stud_wants where sid={$_SESSION['uid']}) order by jobname asc";
-                                            $result=mysqli_query($con,$query);
-                                            echo "<select name='job' id='job'>";
-                                            while ($queryRow = $result->fetch_row()) {
-                                                echo '<option value="'.$queryRow[0].'">'.$queryRow[1].'</option>';
-                                            }
-                                            echo "</select>";
+										echo "<label for='.pref.'>Job Name : </label>";
+										$query = "select jid,jobname from job where jid not in(select jid from stud_wants where sid={$_SESSION['uid']}) order by jobname asc";
+										$result=mysqli_query($con,$query);
+										echo "<select name='job' id='job'>";
+										while ($queryRow = $result->fetch_row()) {
+											echo '<option value="'.$queryRow[0].'">'.$queryRow[1].'</option>';
+										}
+										echo "</select>";
 
 										?>
-                                    </div>
+									</div>
 									<div class="modal-footer">
 										<button type="submit" class="btn btn-primary" name="save">Save changes</button>
 									</div>
 								</form>
-						      </div>
-						<script type="text/javascript">
-							var modal = document.getElementById("myModal");
-							var btn = document.getElementById("myBtn");
-							var span = document.getElementsByClassName("close")[0];
-							btn.onclick = function() {
-								modal.style.display = "block";
-							}
-							span.onclick = function() {
-								modal.style.display = "none";
-							}
-							window.onclick = function(event) {
-								if (event.target == modal) {
+							</div>
+							<script type="text/javascript">
+								var modal = document.getElementById("myModal");
+								var btn = document.getElementById("myBtn");
+								var span = document.getElementsByClassName("close")[0];
+								btn.onclick = function() {
+									modal.style.display = "block";
+								}
+								span.onclick = function() {
 									modal.style.display = "none";
 								}
-							}
-						</script>
-					   </div>
-				    </div>
+								window.onclick = function(event) {
+									if (event.target == modal) {
+										modal.style.display = "none";
+									}
+								}
+							</script>
+						</div>
+					</div>
 
-				<br>
+					<br>
 					<button type='button' class='btn btn-info col-1 m-2' id='gBtn'>Delete</button>
 					<div id="myModal1" class="modal" >
 						<div class="modal-dialog modal-lg" id="m1"role="document">
@@ -190,86 +193,86 @@ if(isset($_POST['save1'])){
 								<div class="modal-body" id="mb1">
 									<form method = "POST" id="f1">
 										<?php
-                                            echo "<label for='.djob.'>Job Name  : </label>";
-                                            $query1 = "select jid,jobname from job where jid in(select jid from stud_wants where sid={$_SESSION['uid']}) order by jobname asc";
-                                            $result1=mysqli_query($con,$query1);
-                                            echo "<select name='rjob' id='rjob'>";
-                                            while ($queryRow1= $result1->fetch_row()) {
-                                                echo '<option value="'.$queryRow1[0].'">'.$queryRow1[1].'</option>';
-                                            }
-                                            echo "</select>";
+										echo "<label for='.djob.'>Job Name  : </label>";
+										$query1 = "select jid,jobname from job where jid in(select jid from stud_wants where sid={$_SESSION['uid']}) order by jobname asc";
+										$result1=mysqli_query($con,$query1);
+										echo "<select name='rjob' id='rjob'>";
+										while ($queryRow1= $result1->fetch_row()) {
+											echo '<option value="'.$queryRow1[0].'">'.$queryRow1[1].'</option>';
+										}
+										echo "</select>";
 										?>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" name="save1">Delete</button>
-										<script type="text/javascript">
-											var modal1 = document.getElementById("myModal1");
-											var btn1= document.getElementById("gBtn");
-											var span1 = document.getElementsByClassName("close1")[0];
-											btn1.onclick = function() {
-												modal1.style.display = "block";
-											}
-											span1.onclick = function() {
-												modal1.style.display = "none";
-											}
-											window.onclick = function(event) {
-												if (event.target == modal) {
-													modal.style.display = "none";
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-primary" name="save1">Delete</button>
+											<script type="text/javascript">
+												var modal1 = document.getElementById("myModal1");
+												var btn1= document.getElementById("gBtn");
+												var span1 = document.getElementsByClassName("close1")[0];
+												btn1.onclick = function() {
+													modal1.style.display = "block";
 												}
-											}
-										</script>
-									</div>
-								</form>
+												span1.onclick = function() {
+													modal1.style.display = "none";
+												}
+												window.onclick = function(event) {
+													if (event.target == modal) {
+														modal.style.display = "none";
+													}
+												}
+											</script>
+										</div>
+									</form>
 
-							     </div>
-                            </div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			     </div>
 				<br>
 				<?php
-                    $query="select t1.jid,t3.jobname,t3.salary from stud_wants t1,job t3 where t1.jid=t3.jid and t1.sid={$_SESSION['uid']} order by t3.jobname asc";
-                    $result=mysqli_query($con,$query);
-                    echo "<table id='example' class='table' style='width:100%'>";
-                    echo "<thead>";
-                    echo "<tr style='background-color:#e6ccff;'>";
-                    echo  "<th scope='col'>Job ID</th>";
-                    echo  "<th scope='col'>Job Name</th>";
-                    echo  "<th scope='col'>Salary</th>";
-                    echo  "</tr>";
-                    echo "</thead>";
-                    $j=0;
-                    while ($queryRow = $result->fetch_row()) {
-                        echo "<tr>";
-                        for($i = 0; $i < $result->field_count; $i++){
-                            echo "<td>$queryRow[$i]</td>";
+				$query="select t1.jid,t3.jobname,t3.salary from stud_wants t1,job t3 where t1.jid=t3.jid and t1.sid={$_SESSION['uid']} order by t3.jobname asc";
+				$result=mysqli_query($con,$query);
+				echo "<table id='example' class='table' style='width:100%'>";
+				echo "<thead>";
+				echo "<tr style='background-color:#e6ccff;'>";
+				echo  "<th scope='col'>Job ID</th>";
+				echo  "<th scope='col'>Job Name</th>";
+				echo  "<th scope='col'>Salary</th>";
+				echo  "</tr>";
+				echo "</thead>";
+				$j=0;
+				while ($queryRow = $result->fetch_row()) {
+					echo "<tr>";
+					for($i = 0; $i < $result->field_count; $i++){
+						echo "<td>$queryRow[$i]</td>";
 
-                        }
-                        echo "<td><button type='button' class='btn btn-primary picked' id='{$queryRow[0]}'>View Details</button></td>";
-                        echo "</tr>";
-                    }
-                    echo "</table>";
+					}
+					echo "<td><button type='button' class='btn btn-primary picked' id='{$queryRow[0]}'>View Details</button></td>";
+					echo "</tr>";
+				}
+				echo "</table>";
 				?>
-                <div id="reqModal" class="modal" >
-						<div class="modal-dialog modal-lg" id="req" role="document">
-							<div class="modal-content" id="reqc">
-								<div class="modal-header" id="mh">
-									<h5 class="modal-title" id='ch'>Job Details</h5>
-									<button type="button" class="reqClose btn close" data-dismiss="modal" aria-label="Close">
-										<span class="reqClose" >&times;</span>
-									</button>
-								</div>
-								<div class="modal-body" id="reqb"></div>
-						      </div>
+				<div id="reqModal" class="modal" >
+					<div class="modal-dialog modal-lg" id="req" role="document">
+						<div class="modal-content" id="reqc">
+							<div class="modal-header" id="mh">
+								<h5 class="modal-title" id='ch'>Job Details</h5>
+								<button type="button" class="reqClose btn close" data-dismiss="modal" aria-label="Close">
+									<span class="reqClose" >&times;</span>
+								</button>
+							</div>
+							<div class="modal-body" id="reqb"></div>
+						</div>
 						<script type="text/javascript">
 							var reqModal = document.getElementById('reqModal');
 							var reqModalClose = document.getElementsByClassName("reqClose")[0];
-                            $('.picked').on('click', function() {
-                                console.log(this.id);
-                                jid = this.id;
-                                $('#reqb').load('view_prereq.php?jid='+jid,function(){
-                                    reqModal.style.display = "block";
-                                });
-                            });
+							$('.picked').on('click', function() {
+								console.log(this.id);
+								jid = this.id;
+								$('#reqb').load('view_prereq.php?jid='+jid,function(){
+									reqModal.style.display = "block";
+								});
+							});
 							reqModalClose.onclick = function() {
 								reqModal.style.display = "none";
 							}
@@ -279,9 +282,9 @@ if(isset($_POST['save1'])){
 								}
 							}
 						</script>
-					   </div>
-				    </div>
-            </main>
+					</div>
+				</div>
+			</main>
 		</div>
 	</div>
 	<br>

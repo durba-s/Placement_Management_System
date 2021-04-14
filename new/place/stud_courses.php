@@ -74,9 +74,12 @@ if(isset($_POST['save1'])){
 					<li class="nav-item">
 						<a class="nav-link" href="stud_elig.php">Eligibility</a>
 					</li>
-				<li class="nav-item">
-					<a class="nav-link" href="jobquery.php">View Jobs</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="jobquery.php">View Jobs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="jobfilter.php">Filter Jobs</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="logout.php">Logout</a>
 					</li>
@@ -181,7 +184,7 @@ if(isset($_POST['save1'])){
 								</div>
 
 								<form method = "POST" id="f">
-								<div class="modal-body" id="mb">
+									<div class="modal-body" id="mb">
 										<?php
 										echo "<label for='.cou.'>Course Name  : </label>";
 										$query = "select * from course where courseid not in(select courseid from stud_course where sid={$_SESSION['uid']}) order by name asc";
@@ -240,7 +243,7 @@ if(isset($_POST['save1'])){
 								</div>
 
 								<form method = "POST" id="f1">
-								<div class="modal-body" id="mb1">
+									<div class="modal-body" id="mb1">
 										<?php
 										echo "<label for='.cou.'>Course Name  : </label>";
 										$query1 = "select * from course where courseid in(select courseid from stud_course where sid={$_SESSION['uid']}) order by name asc";

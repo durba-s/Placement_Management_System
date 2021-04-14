@@ -46,7 +46,7 @@ $user_data=check_login($con);
 					</a>
 				</li>
 				<li class="nav-item">
-						<a class="nav-link" href="stud_courses.php">Courses</a>
+					<a class="nav-link" href="stud_courses.php">Courses</a>
 				</li>
 				<li class="nav-item ">
 					<a class="nav-link" href="stud_pref.php">Preferences</a>
@@ -56,6 +56,9 @@ $user_data=check_login($con);
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link active-link" href="#">View Jobs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="jobfilter.php">Filter Jobs</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="logout.php">Logout</a>
