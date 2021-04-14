@@ -105,7 +105,7 @@ if(isset($_POST['add'])){
  <input type="checkbox" id="nav-toggle">
  <div class="sidebar1">
   <div class="sidebar-brand1">
-    <h2><span></span><span>Placement Management System</span></h2>
+    <h2><span></span><span style="font-size: 1.5rem;"><b>Placement Management System</b></span></h2>
   </div>
 
   <div class="sidebar-menu1" >
