@@ -217,6 +217,7 @@ $user_data=check_login2($con);
       }
       else if($_POST['role']=='Student'){
         $id=$_POST['new'];
+        $_SESSION['sid']=$id;
         $query = "select * from student where sid={$id} limit 1";
         $result = mysqli_query($con,$query);
         $result1 = mysqli_query($con,$query);
@@ -286,6 +287,7 @@ $user_data=check_login2($con);
       }
       else {
         $id=$_POST['new'];
+
         $query = "select * from job where jid={$id} limit 1";
         $result = mysqli_query($con,$query);
         $result1 = mysqli_query($con,$query);
@@ -400,7 +402,7 @@ $user_data=check_login2($con);
                     <input type="date" id="pdate" name="pdate" required>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" name="save1">Save changes</button>
+                    <button class="btn btn-primary" name="save1">Save changes</button>
                     <script type="text/javascript">
                       var modal1 = document.getElementById("myModal1");
                       var btn1= document.getElementById("gBtn");
@@ -425,6 +427,16 @@ $user_data=check_login2($con);
 
 
           </div>
+<?php
+  if(isset($_POST['save1'])){
+  $jb1=$_POST['job1'];
+  $dt1=$_POST['pdate'];
+  $dt=date("Y-m-d",strtotime($dt1));
+  $sql1 = "INSERT INTO STUD_GETS VALUES({$_SESSION['sid']},$jb1,\"$dt\")";
+  unset($_SESSION['sid']);
+  mysqli_query($con, $sql1);
+  unset($_POST['save1']);
+}  ?>
 
   </main>
 </div>
