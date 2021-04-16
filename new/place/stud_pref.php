@@ -46,9 +46,6 @@ if(isset($_POST['save1'])){
 					<a class="nav-link" href="index.php">Home
 					</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="stud_courses.php">Courses</a>
-				</li>
 				<li class="nav-item active">
 					<a class="nav-link active-link " href="#">Preferences</a>
 				</li>

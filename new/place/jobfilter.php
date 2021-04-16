@@ -46,9 +46,6 @@ $user_data=check_login($con);
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="stud_courses.php">Courses</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="stud_pref.php">Preferences</a>
                 </li>
                 <li class="nav-item">
