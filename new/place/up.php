@@ -138,7 +138,7 @@ $(document).ready(function() {
             <div class="modal-content" id="mc1">
               <div class="modal-header" id="mh1">
                 <h5 class="modal-title" id='ch1'>Add Pre-Requisite</h5>
-                <button type="button" class="close1" data-dismiss="modal" aria-label="Close" >
+                <button type="button" class="btn close1" data-dismiss="modal" aria-label="Close" >
                   <span class="close1" >&times;</span>
                 </button>
               </div>
@@ -196,7 +196,7 @@ $(document).ready(function() {
             <div class="modal-content" id="mc111">
               <div class="modal-header" id="mh111">
                 <h5 class="modal-title" id='ch111'>Delete Pre-Requisite Course</h5>
-                <button type="button" class="close111" data-dismiss="modal" aria-label="Close" >
+                <button type="button" class="btn close111" data-dismiss="modal" aria-label="Close" >
                   <span class="close111" >&times;</span>
                 </button>
               </div>
@@ -223,7 +223,7 @@ $(document).ready(function() {
                     btn12.onclick = function() {
                       modal12.style.display = "block";
                     }
-                    span2.onclick = function() {
+                    span12.onclick = function() {
                       modal12.style.display = "none";
                     }
                     window.onclick = function(event) {
@@ -247,7 +247,7 @@ $(document).ready(function() {
             <div class="modal-content" id="mc11">
               <div class="modal-header" id="mh11">
                 <h5 class="modal-title" id='ch11'>Edit Course Grade</h5>
-                <button type="button" class="close11" data-dismiss="modal" aria-label="Close" >
+                <button type="button" class="btn close11" data-dismiss="modal" aria-label="Close" >
                   <span class="close11" >&times;</span>
                 </button>
               </div>
