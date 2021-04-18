@@ -109,6 +109,30 @@ $user_data=check_login($con);
                         echo $user_data['PIN'];
                         echo('</p>');
                         echo('</p>');
+                        $query11="select t1.jid,t2.jobname,t2.salary FROM  STUD_GETS t1,job t2 WHERE t1.sid={$_SESSION['uid']} and t2.jid=t1.jid ";
+                        $result11=mysqli_query($con,$query11);
+                        if($result11 && mysqli_num_rows($result11) > 0)
+                        {
+                            echo('<p class="card-text"><b>Placement Status: </b>');
+                            echo "Placed";
+                            echo('</p>');
+                            $queryRow11= $result11->fetch_row();
+                            echo('<p class="card-text"><b>Job ID: </b>');
+                            echo $queryRow11[0];
+                            echo('</p>');
+                            echo('<p class="card-text"><b>Job Name: </b>');
+                            echo $queryRow11[1];
+                            echo('</p>');
+                            echo('<p class="card-text"><b>Annual Salary: </b>');
+                            echo $queryRow11[2];
+                            echo('</p>');
+                        }
+                        else{
+                            echo('<p class="card-text"><b>Placement Status: </b>');
+                            echo "Not Placed yet";
+                            echo('</p>');
+
+                        }
                         ?>
                         <a href="edit_info.php" class="btn btn-primary" style="background: #390669; color: white;">Edit personal info</a>
                     </div>

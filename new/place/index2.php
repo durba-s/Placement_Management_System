@@ -38,17 +38,17 @@ $result=mysqli_query($con,$query);
 $queryRow= $result->fetch_row();
 $hsal=$queryRow[0];
 
-$query="create or replace view demo AS select t1.sid as name,t2.salary as distance from stud_gets t1,job t2 where t1.jid=t2.jid";
+$query="create or replace view demo AS select t1.sid as name,t2.salary as sal from stud_gets t1,job t2 where t1.jid=t2.jid";
 mysqli_query($con,$query);
 $query="SET @rowindex := -1";
 mysqli_query($con,$query);
 $query="SELECT
-AVG(d.distance) as Median 
+AVG(d.sal) as Median 
 FROM
 (SELECT @rowindex:=@rowindex + 1 AS rowindex,
- demo.distance AS distance
+ demo.sal AS sal
  FROM demo
- ORDER BY demo.distance) AS d
+ ORDER BY demo.sal) AS d
  WHERE
  d.rowindex IN (FLOOR(@rowindex / 2), CEIL(@rowindex / 2))";
  $result=mysqli_query($con,$query);

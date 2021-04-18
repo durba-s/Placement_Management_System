@@ -86,12 +86,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 
-	<title>Placement Management System</title>
+<title>Placement Management System</title>
 </head>
 <body>
 	<div class="container">
@@ -117,6 +116,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 			<div class="input-group">
 				<input type="password" placeholder="Password" name="password" required>
 			</div>
+			<div>
+				<input type="checkbox" id="decl" name="decl" value="decl" required>
+				<label for="decl" style="font-size: 0.8rem; font-style: oblique; color: #7c7880;">By signing in I hereby declare that the details I furnish on this platform are factually correct to the best of my knowledge and I hold the responsibility for the correctness </label>
+
+			</div>
 			<div style="color:red ;">
 				<?php
 				if(isset($_SESSION['log_error'])){
@@ -130,21 +134,21 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 				<br>
 				<button name="submit" style="
 				display: block;
-			    width: 100%;
-			    padding: 15px 20px;
-			    text-align: center;
-			    border: none;
-			    background: #b866ff;
-			    outline: none;
-			    border-radius: 30px;
-			    font-size: 1.2rem;
-			    color: #FFF;
-			    cursor: pointer;
+				width: 100%;
+				padding: 15px 20px;
+				text-align: center;
+				border: none;
+				background: #b866ff;
+				outline: none;
+				border-radius: 30px;
+				font-size: 1.2rem;
+				color: #FFF;
+				cursor: pointer;
 				">
-			   Sign in</button>
-			</div>
-			<br>
-		</form>
-	</div>
+			Sign in</button>
+		</div>
+		<br>
+	</form>
+</div>
 </body>
 </html>
