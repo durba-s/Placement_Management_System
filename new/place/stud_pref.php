@@ -201,7 +201,7 @@ if(isset($_POST['save1'])){
 					</div>
 
 					<br>
-					<button type='button' class='btn btn-info col-1 m-2' id='gBtn'>Delete</button>
+					<button type='button' class='btn btn-info col-1 m-2' id='gBtn' <?php if($resultnp->num_rows<=1) {?> disabled="disabled" <?php } ?>>Delete</button>
 					<div id="myModal1" class="modal" >
 						<div class="modal-dialog modal-lg" id="m1"role="document">
 							<div class="modal-content" id="mc1">
